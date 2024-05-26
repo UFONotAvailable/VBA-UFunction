@@ -334,7 +334,6 @@ ArrScrollColumnRev_Index(ByRef arr2D, Index) As Variant 二维数组列滚动 �
 ArrCombinCon(arr, r) 组合  arr 一维数组 r抽取数量
 ArrPermutCon(arr, r) 排列  arr 一维数组 r抽取数量
 ```
-
 矩阵-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 Matrix_Add(ParamArray Calculates()) As Variant 矩阵加法计算
@@ -365,12 +364,6 @@ Matrix_Str_Len(ByRef String1) As Variant 矩阵Len 矩阵参数：String1
 Matrix_Str_Replace(Expression, Find, Replace, Optional Start = 1, Optional Count = -1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant 矩阵替换 矩阵参数：Expression, Find, Replace
 Matrix_DateSub(Interval, Date1, Date2) As Variant 矩阵日期间隔 参照DateDiff 矩阵参数：Interval, Date1, Date2
 ```
-
-
-
-
-
-
 字符串-----------------------------------------------------------------------------------------------------------------------------------
 ```VB
 StringBuilder(Optional ByRef s) As Variant  传参则添加，不传参则取值或初始化
@@ -472,8 +465,6 @@ StrConvert(ByVal strText As String) As String unicode字符转换成中文
 StrencodeBase64(String1, Optional Charset = "") As String 字符串编码Base64
 StrdecodeBase64(String1, Optional Charset = "") As String 字符串解码Base64
 ```
-
-
 系统-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 Clipboard_GetData() As String  剪贴板读取
@@ -483,7 +474,6 @@ UserName() As String  用户名
 UserDomain() As String  用户的域名
 ComputerName() As String  计算机名
 ```
-
 文件-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 TextRead(TextPath) As String  读取txt文件(ANSI编码)
@@ -506,7 +496,6 @@ FileCopy(Source, Destination, Optional OverWrite As Boolean = True) As Boolean �
 FileSearch(pPath) As Variant 遍历文件夹里文件
 FileSearchSub(pPath, Optional pMask As String = "") As Variant 遍历文件夹里文件(含子文件夹) pPath搜索起始路径，pMask如果要必填写,那得这样填写"*.xlsx",加星号
 ```
-
 路径-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 PathGetTemp() As String  返回临时路径
@@ -580,7 +569,6 @@ Rng_Validation(rng As Range, Formula, Optional ShowError As Boolean = True, Opti
 RngAddComment(rng As Range, CommentText, Optional Visible As Boolean = False) As Comment 添加批注
 RngAddPicture(PicturePath, rng As Range, Optional LowerWidth = 0, Optional LowerHeight = 0, Optional OriginalSizeRatio As Boolean = False) As Shape 添加图片 PicturePath本地路径 rng单元格 LowerWidth宽度缩进量 LowerHeight高度缩进量 OriginalSizeRatio是否按原大小比例
 ```
-
 数学-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 SumParams(ParamArray arr()) As Double 参数求和
@@ -620,9 +608,6 @@ vbPi() As Double Pi的值
 AngleToRadian(Angle) As Double 角度转弧度
 RadianToAngle(Radian, Optional ByVal NumDigitsAfterDecimal = 3) As Double 弧度转角度
 ```
-
-
-
 功能-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 Deconstruc(ParamArray DValue() As Variant, ByRef Value As Variant) 解构 Deconstruc(变量1, 变量2, 变量3) = Array(1, 2, 3)
@@ -660,7 +645,6 @@ CStrEx(Expression) As Variant 扩展CStr 支持数组转换
 CVarEx(Expression) As Variant 扩展CVar 支持数组转换
 CBoolEx(Expression) As Variant 扩展CBool 支持数组转换
 ```
-
 Http-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 HttpGet(Url, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Get请求
