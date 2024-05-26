@@ -1,7 +1,7 @@
 # VBA-UFunction
 VBA函数库
 
-数组-------------------------------------------------------------------------------------------------------------------------------------
+## 数组
 ```VB
 *适用于所有数组函数*：索引Index参数可以使用@修饰符 表示从头数第n个行列 例如ArrGetRegion(Array(1, 2, 3), 1, 1)->[2]   ArrGetRegion(Array(1, 2, 3), 1@, 1)->[1]
 
@@ -739,7 +739,7 @@ ArrCombinCon(arr, r) 组合  arr 一维数组 r抽取数量
 
 ArrPermutCon(arr, r) 排列  arr 一维数组 r抽取数量
 ```
-矩阵-------------------------------------------------------------------------------------------------------------------------------------
+## 矩阵
 ```VB
 Matrix_Add(ParamArray Calculates()) As Variant 矩阵加法计算
 
@@ -806,7 +806,7 @@ Matrix_Str_Replace(Expression, Find, Replace, Optional Start = 1, Optional Count
 Matrix_DateSub(Interval, Date1, Date2) As Variant
 `矩阵日期间隔 参照DateDiff 矩阵参数：Interval, Date1, Date2
 ```
-字符串-----------------------------------------------------------------------------------------------------------------------------------
+## 字符串
 ```VB
 StringBuilder(Optional ByRef s) As Variant  传参则添加，不传参则取值或初始化
 StringBuilder1 , StringBuilder2, StringBuilder3 多个StringBuilder
@@ -986,7 +986,7 @@ StrencodeBase64(String1, Optional Charset = "") As String 字符串编码Base64
 
 StrdecodeBase64(String1, Optional Charset = "") As String 字符串解码Base64
 ```
-系统-------------------------------------------------------------------------------------------------------------------------------------
+## 系统
 ```VB
 Clipboard_GetData() As String  剪贴板读取
 
@@ -1000,7 +1000,7 @@ UserDomain() As String  用户的域名
 
 ComputerName() As String  计算机名
 ```
-文件-------------------------------------------------------------------------------------------------------------------------------------
+## 文件
 ```VB
 TextRead(TextPath) As String
 `读取txt文件(ANSI编码)
@@ -1059,7 +1059,7 @@ FileSearch(pPath) As Variant
 FileSearchSub(pPath, Optional pMask As String = "") As Variant
 `遍历文件夹里文件(含子文件夹) pPath搜索起始路径，pMask如果要必填写,那得这样填写"*.xlsx",加星号
 ```
-路径-------------------------------------------------------------------------------------------------------------------------------------
+## 路径
 ```VB
 PathGetTemp() As String  返回临时路径
 
@@ -1082,7 +1082,7 @@ PathTempName() As String  随机文件名
 PathNameSerialNumber(Name, Optional DelimiterLeft = "(", Optional DelimiterRight = ")") As String
 `名称重复时给名称加序号 Name当前名称 DelimiterLeft序号左侧分隔符 DelimiterRight序号右侧分隔符
 ```
-单元格-----------------------------------------------------------------------------------------------------------------------------------
+## 单元格
 ```VB
 ColumnChr(ByVal v) As String  数字转字母
 
@@ -1232,7 +1232,7 @@ RngAddComment(rng As Range, CommentText, Optional Visible As Boolean = False) As
 RngAddPicture(PicturePath, rng As Range, Optional LowerWidth = 0, Optional LowerHeight = 0, Optional OriginalSizeRatio As Boolean = False) As Shape
 `添加图片 PicturePath本地路径 rng单元格 LowerWidth宽度缩进量 LowerHeight高度缩进量 OriginalSizeRatio是否按原大小比例
 ```
-数学-------------------------------------------------------------------------------------------------------------------------------------
+## 数学
 ```VB
 SumParams(ParamArray arr()) As Double 参数求和
 
@@ -1317,7 +1317,7 @@ AngleToRadian(Angle) As Double 角度转弧度
 RadianToAngle(Radian, Optional ByVal NumDigitsAfterDecimal = 3) As Double
 `弧度转角度
 ```
-功能-------------------------------------------------------------------------------------------------------------------------------------
+## 功能
 ```VB
 Deconstruc(ParamArray DValue() As Variant, ByRef Value As Variant)
 `解构 Deconstruc(变量1, 变量2, 变量3) = Array(1, 2, 3)
@@ -1409,7 +1409,7 @@ CVarEx(Expression) As Variant 扩展CVar 支持数组转换
 
 CBoolEx(Expression) As Variant 扩展CBool 支持数组转换
 ```
-Http-------------------------------------------------------------------------------------------------------------------------------------
+## Http
 ```VB
 HttpGet(Url, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant
 `Get请求
