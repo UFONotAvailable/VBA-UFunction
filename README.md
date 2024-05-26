@@ -4,11 +4,18 @@ VBA函数库
 数组-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 *适用于所有数组函数*：索引Index参数可以使用@修饰符 表示从头数第n个行列 例如ArrGetRegion(Array(1, 2, 3), 1, 1)->[2]   ArrGetRegion(Array(1, 2, 3), 1@, 1)->[1]
+
 Let Titles(ParamArray TitleNames(), ByRef TitleIndexs As Variant)
 '缓存标题，将标题字段转成数字输出 例子：Titles("a", "b", "c") = Array(1, 2, 3)
-Get Titles(ParamArray TitleNames()) As Variant 取出缓存标题 返回数组  T = Titles("a", "b", "c")->[1, 2, 3]
-Get Title() As Object 返回缓存标题字典 利用这个取单个标题  Title!a -> 1  Title!b -> 2
-ArrCache(Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion As Boolean = False) 缓存数组属性，可以对其赋值取值操作，支持一维和二维
+
+Get Titles(ParamArray TitleNames()) As Variant
+`取出缓存标题 返回数组  T = Titles("a", "b", "c")->[1, 2, 3]
+
+Get Title() As Object
+`返回缓存标题字典 利用这个取单个标题  Title!a -> 1  Title!b -> 2
+
+ArrCache(Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion As Boolean = False)
+`缓存数组属性，可以对其赋值取值操作，支持一维和二维
    ArrCache = arr 赋值整个数组
    ArrCache(RowIndex) = arr 修改二维数组的RowIndex行1列开始的值  或 修改一维数组从RowIndex开始的值
    ArrCache(, ColumnIndex) = arr 修改二维数组的1行ColumnIndex列开始的值
@@ -22,8 +29,12 @@ ArrCache(Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion
    arr = ArrCache(RowIndex数组, ColumnIndex) 取ColumnIndex列里的RowIndex索引的多个值 返回一维数组
    arr = ArrCache(RowIndex, ColumnIndex数组) 取RowIndex行里的ColumnIndex索引的多个值 返回一维数组
    arr = ArrCache(RowIndex数组, ColumnIndex数组) 取RowIndex行ColumnIndex列索引相交的值 返回二维数组
-ArrCache1 , ArrCache2 , ArrCache3 多个缓存数组
-ArrBlend(ByRef arrC, Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion As Boolean = False) 数组区域复合操作 参照ArrCache
+
+ArrCache1 , ArrCache2 , ArrCache3
+`多个缓存数组
+
+ArrBlend(ByRef arrC, Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion As Boolean = False)
+`数组区域复合操作 参照ArrCache
 
 ArrGetValue(arr, ByVal RowCount, Optional ByVal ColumnCount, Optional EmptyContent = "") As Variant 数组取值操作，按元素第RowCount,ColumnCount个取,超出界限返回EmptyContent
 不是数组时永远返回arr,数组元素数量为1时永远返回这个元素，数组为一行数组时只计算ColumnCount RowCount永=1，数组为一列或一维数组时只计算RowCount ColumnCount永=1
