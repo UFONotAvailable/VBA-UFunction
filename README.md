@@ -1,11 +1,6 @@
 # VBA-UFunction
 VBA函数库
 ```VB	
-IF THEN
-    
-```
-
-
 '数组-------------------------------------------------------------------------------------------------------------------------------------
 '*适用于所有数组函数*：索引Index参数可以使用@修饰符 表示从头数第n个行列 例如ArrGetRegion(Array(1, 2, 3), 1, 1)->[2]   ArrGetRegion(Array(1, 2, 3), 1@, 1)->[1]
 'Let Titles(ParamArray TitleNames(), ByRef TitleIndexs As Variant) 缓存标题，将标题字段转成数字输出 例子：Titles("a", "b", "c") = Array(1, 2, 3)
@@ -664,3 +659,5 @@ IF THEN
 'HttpPost_Form(Url, SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Post请求 发送表单数据
 'HttpPost_Json(Url, SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Post请求 发送Json数据
 'HttpReadJson(Jsonstr As String, Routestr As String) As Variant 读取JSON属性
+```
+
