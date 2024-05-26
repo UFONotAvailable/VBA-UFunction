@@ -36,314 +36,707 @@ ArrCache1 , ArrCache2 , ArrCache3
 ArrBlend(ByRef arrC, Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion As Boolean = False)
 `数组区域复合操作 参照ArrCache
 
-ArrGetValue(arr, ByVal RowCount, Optional ByVal ColumnCount, Optional EmptyContent = "") As Variant 数组取值操作，按元素第RowCount,ColumnCount个取,超出界限返回EmptyContent
-不是数组时永远返回arr,数组元素数量为1时永远返回这个元素，数组为一行数组时只计算ColumnCount RowCount永=1，数组为一列或一维数组时只计算RowCount ColumnCount永=1
+ArrGetValue(arr, ByVal RowCount, Optional ByVal ColumnCount, Optional EmptyContent = "") As Variant
+`数组取值操作，按元素第RowCount,ColumnCount个取,超出界限返回EmptyContent
+`不是数组时永远返回arr,数组元素数量为1时永远返回这个元素，数组为一行数组时只计算ColumnCount RowCount永=1，数组为一列或一维数组时只计算RowCount ColumnCount永=1
 
 ArrGetValueCache(Optional ByVal RowCount, Optional ByVal ColumnCount, Optional WriteArr As Boolean = False, Optional arr, Optional EmptyContent = "") As Variant
-数组取值操作 同ArrGetValue 不同的是arr,EmptyContent写入函数缓存中 减少计算加快读取速度
-WriteArr=True时写入arr缓存 WriteArr=False时传入RowCount,ColumnCount读取缓存数组
-设置缓存数组示例：ArrGetValueCache WriteArr:=True, arr:=arr, EmptyContent:=""
-读取缓存数组示例：v = ArrGetValueCache(i, j)
-ArrGetValueCache1 , ArrGetValueCache2 , ArrGetValueCache3 , ArrGetValueCache4 , ArrGetValueCache5
+`数组取值操作 同ArrGetValue 不同的是arr,EmptyContent写入函数缓存中 减少计算加快读取速度
+`WriteArr=True时写入arr缓存 WriteArr=False时传入RowCount,ColumnCount读取缓存数组
+`设置缓存数组示例：ArrGetValueCache WriteArr:=True, arr:=arr, EmptyContent:=""
+`读取缓存数组示例：v = ArrGetValueCache(i, j)
+`ArrGetValueCache1 , ArrGetValueCache2 , ArrGetValueCache3 , ArrGetValueCache4 , ArrGetValueCache5
 
-ArrayDynamic(Optional ByRef v) As Variant 一维动态数组 传参则添加，不传参则取值或初始化
+ArrayDynamic(Optional ByRef v) As Variant
+`一维动态数组 传参则添加，不传参则取值或初始化
 ArrayDynamic1 , ArrayDynamic2, ArrayDynamic3 多个ArrayDynamic
-ArrayDynamic2D(ParamArray v()) As Variant 二维动态数组 传多个参数添加一行，不传参则取值或初始化
+
+ArrayDynamic2D(ParamArray v()) As Variant
+`二维动态数组 传多个参数添加一行，不传参则取值或初始化
 ArrayDynamic2D1 , ArrayDynamic2D2 , ArrayDynamic2D3  多个ArrayDynamic2D
-ArrTranspose(ByRef arr) As Variant 数组转置
-ArrFlip(arr) As Variant  数组翻转
-ArrTo2D(ByRef arr1D, ByVal DCount As Long) As Variant 一维数组转二维数组
-Arr2DTo1D(ByRef arr2D, Optional RowFirst As Boolean = True) As Variant 二维数组转一维数组
-ArrF_T(ByRef arr, Optional ColumnCount = 0) As Variant 假数组变真数组  ColumnCount =0取最大列 >0使用ColumnCount作为列数超出被截去 <0按第一个元素的数量为列数
-ArrF_T_LIndexToUIndex(ByRef arr) As Variant 假数组变真数组 保留数组上下标 *数组上标必须一致*
-ArrFlatten_Single(ParamArray arr()) As Variant  展平数组(一维化) 单层
-ArrFlatten(ParamArray arr()) As Variant  展平数组(一维化) 递归
-Arr2DFlatten(ByRef arr2D, ByVal ColumnIndex) As Variant 二维数组内含有数组的情况,将对应的列复制多行展开
-ArrMergeRow(ByVal arr) As Variant  合并数组，上下合并
-ArrMergeRowParam(ParamArray arr()) As Variant 合并数组，上下合并(多参数)
-ArrMergeColumn(ByVal arr) As Variant 合并数组，左右合并
-ArrMergeColumnParam(ParamArray arr()) As Variant 合并数组，左右合并(多参数)
 
-ArrCopyElement(ByRef arr, ParamArray ArrEleCount()) As Variant 一维数组 复制元素 ArrEleCount为对应arr大小的数量数组 ArrCopyElement([1,2,3],[2,3])->[1,1,2,2,2,3]
-ArrCopyElement2(ByRef arr, ArrCopyIndex, ArrCopyCount) As Variant 一维数组 复制元素 ArrCopyIndex位置对应的复制ArrCopyCount个 ArrCopyElement2([1,2,3],[2,3],[2,3])->[1,2,2,3,3,3]
-ArrCopyColumn(ByRef arr2D, ParamArray ArrEleCount()) As Variant 复制整列 ArrEleCount为对应arr2D列数量的数量数组
-ArrCopyColumn2(ByRef arr2D, ArrCopyIndex, ArrCopyCount) As Variant 复制整列 ArrCopyIndex位置对应的复制ArrCopyCount个
-ArrCopyRow(ByRef arr2D, ParamArray ArrEleCount()) As Variant 复制整行 ArrEleCount为对应arr2D行数量的数量数组
-ArrCopyRow2(ByRef arr2D, ArrCopyIndex, ArrCopyCount) As Variant 复制整行 ArrCopyIndex位置对应的复制ArrCopyCount个
+ArrTranspose(ByRef arr) As Variant
+`数组转置
 
-ArrInsert(ByRef arr, Optional ByVal Index, Optional ByVal EleCount As Long = 1, Optional EleCopy As Boolean = False) As Variant 一维数组 插入一个空值或多个空值 EleCopy=True复制插入
-ArrInsertColumn(ByRef arr2D, Optional ByVal ColumnIndex, Optional ByVal ColumnCount As Long = 1, Optional EleCopy As Boolean = False) As Variant 数组 插入一列或多列 EleCopy=True复制插入
-ArrInsertRow(ByRef arr2D, Optional ByVal RowIndex, Optional ByVal RowCount As Long = 1, Optional EleCopy As Boolean = False) As Variant 数组 插入一行或多行 EleCopy=True复制插入
-ArrGetIndex(ByRef arr, Optional GetRowIndex As Boolean = True) As Variant() 数组 取索引
-ArrRemoveRegion(ByRef arr, ByRef Index, Optional ByVal Count = 1) As Variant 一维数组 删除一个元素或多个元素
-ArrRemoveColumn(ByRef arr2D, ByRef Index, Optional ByVal ColumnCount = 1) As Variant 数组 删除一列或多列
-ArrRemoveColumns(ByRef arr2D, ParamArray arrIndex()) As Variant 数组 删除一列或多列 多参数
-ArrRemoveRow(ByRef arr2D, ByRef Index, Optional ByVal RowCount = 1) As Variant 数组 删除一行或多行
-ArrRemoveRows(ByRef arr2D, ParamArray arrIndex()) As Variant 数组 删除一行或多行 多参数
-ArrGetRow(ByRef arr2D, ByRef Index, Optional ByVal RowCount = 1, Optional Expansion As Boolean = False) As Variant 数组取整行 一行为一维数组 RowCount=0取到最后行
-ArrGetRows(ByRef arr2D, ByVal arrIndex) As Variant  数组取多行到二维数组
-ArrGetColumn(ByRef arr2D, ByRef Index, Optional ByVal ColumnCount = 1, Optional Expansion As Boolean = False) As Variant 数组取整列 一列为一维数组 ColumnCount=0取到最后列
+ArrFlip(arr) As Variant
+`数组翻转
+
+ArrTo2D(ByRef arr1D, ByVal DCount As Long) As Variant
+`一维数组转二维数组
+
+Arr2DTo1D(ByRef arr2D, Optional RowFirst As Boolean = True) As Variant
+`二维数组转一维数组
+
+ArrF_T(ByRef arr, Optional ColumnCount = 0) As Variant
+`假数组变真数组  ColumnCount =0取最大列 >0使用ColumnCount作为列数超出被截去 <0按第一个元素的数量为列数
+
+ArrF_T_LIndexToUIndex(ByRef arr) As Variant
+`假数组变真数组 保留数组上下标 *数组上标必须一致*
+
+ArrFlatten_Single(ParamArray arr()) As Variant
+`展平数组(一维化) 单层
+
+ArrFlatten(ParamArray arr()) As Variant
+`展平数组(一维化) 递归
+
+Arr2DFlatten(ByRef arr2D, ByVal ColumnIndex) As Variant
+·二维数组内含有数组的情况,将对应的列复制多行展开
+
+ArrMergeRow(ByVal arr) As Variant
+` 合并数组，上下合并
+
+ArrMergeRowParam(ParamArray arr()) As Variant
+`合并数组，上下合并(多参数)
+
+ArrMergeColumn(ByVal arr) As Variant
+`合并数组，左右合并
+
+ArrMergeColumnParam(ParamArray arr()) As Variant
+`合并数组，左右合并(多参数)
+
+
+ArrCopyElement(ByRef arr, ParamArray ArrEleCount()) As Variant
+`一维数组 复制元素 ArrEleCount为对应arr大小的数量数组 ArrCopyElement([1,2,3],[2,3])->[1,1,2,2,2,3]
+
+ArrCopyElement2(ByRef arr, ArrCopyIndex, ArrCopyCount) As Variant
+`一维数组 复制元素 ArrCopyIndex位置对应的复制ArrCopyCount个 ArrCopyElement2([1,2,3],[2,3],[2,3])->[1,2,2,3,3,3]
+
+ArrCopyColumn(ByRef arr2D, ParamArray ArrEleCount()) As Variant
+`复制整列 ArrEleCount为对应arr2D列数量的数量数组
+
+ArrCopyColumn2(ByRef arr2D, ArrCopyIndex, ArrCopyCount) As Variant
+`复制整列 ArrCopyIndex位置对应的复制ArrCopyCount个
+
+ArrCopyRow(ByRef arr2D, ParamArray ArrEleCount()) As Variant
+`复制整行 ArrEleCount为对应arr2D行数量的数量数组
+
+ArrCopyRow2(ByRef arr2D, ArrCopyIndex, ArrCopyCount) As Variant
+`复制整行 ArrCopyIndex位置对应的复制ArrCopyCount个
+
+
+ArrInsert(ByRef arr, Optional ByVal Index, Optional ByVal EleCount As Long = 1, Optional EleCopy As Boolean = False) As Variant
+`一维数组 插入一个空值或多个空值 EleCopy=True复制插入
+
+ArrInsertColumn(ByRef arr2D, Optional ByVal ColumnIndex, Optional ByVal ColumnCount As Long = 1, Optional EleCopy As Boolean = False) As Variant
+`数组 插入一列或多列 EleCopy=True复制插入
+
+ArrInsertRow(ByRef arr2D, Optional ByVal RowIndex, Optional ByVal RowCount As Long = 1, Optional EleCopy As Boolean = False) As Variant
+`数组 插入一行或多行 EleCopy=True复制插入
+
+ArrGetIndex(ByRef arr, Optional GetRowIndex As Boolean = True) As Variant()
+`数组 取索引
+
+ArrRemoveRegion(ByRef arr, ByRef Index, Optional ByVal Count = 1) As Variant
+`一维数组 删除一个元素或多个元素
+
+ArrRemoveColumn(ByRef arr2D, ByRef Index, Optional ByVal ColumnCount = 1) As Variant
+`数组 删除一列或多列
+
+ArrRemoveColumns(ByRef arr2D, ParamArray arrIndex()) As Variant
+` 数组 删除一列或多列 多参数
+
+ArrRemoveRow(ByRef arr2D, ByRef Index, Optional ByVal RowCount = 1) As Variant
+`数组 删除一行或多行
+
+ArrRemoveRows(ByRef arr2D, ParamArray arrIndex()) As Variant
+`数组 删除一行或多行 多参数
+
+ArrGetRow(ByRef arr2D, ByRef Index, Optional ByVal RowCount = 1, Optional Expansion As Boolean = False) As Variant
+`数组取整行 一行为一维数组 RowCount=0取到最后行
+
+ArrGetRows(ByRef arr2D, ByVal arrIndex) As Variant
+`数组取多行到二维数组
+
+ArrGetColumn(ByRef arr2D, ByRef Index, Optional ByVal ColumnCount = 1, Optional Expansion As Boolean = False) As Variant
+`数组取整列 一列为一维数组 ColumnCount=0取到最后列
+
 ArrGetColumns(ByRef arr2D, ByVal arrIndex) As Variant  数组取多列到二维数组
+
 ArrGetRegion2D(ByRef arr2D, Optional ByVal RowIndex, Optional ByVal ColumnIndex, _
-     Optional ByVal Height = 0, Optional ByVal Width = 0, Optional Expansion As Boolean = False) As Variant  数组取区域 索引加大小 二维数组
+     Optional ByVal Height = 0, Optional ByVal Width = 0, Optional Expansion As Boolean = False) As Variant
+`数组取区域 索引加大小 二维数组
+
 ArrGetRegion2D_To(ByRef arr2D, Optional ByVal RowIndex, Optional ByVal ColumnIndex, _
-        Optional ByVal RowIndex2, Optional ByVal ColumnIndex2, Optional Expansion As Boolean = False) As Variant  数组取区域 索引到索引 二维数组
-ArrGetRegion(ByRef arr, Optional ByVal Index, Optional ByVal Count = 0, Optional Expansion As Boolean = False) As Variant 数组取区域 一维数组
-ArrGetRegion_To(ByRef arr, Optional ByVal Index, Optional ByVal IndexTo, Optional Expansion As Boolean = False) As Variant 数组取区域 索引到索引 一维数组
-ArrSizeExpansion(ByRef arr, ByRef RowCount, Optional ByRef ColumnCount, Optional FillValue = Empty) 数组扩充大小  **数组下标变1**
+        Optional ByVal RowIndex2, Optional ByVal ColumnIndex2, Optional Expansion As Boolean = False) As Variant
+`数组取区域 索引到索引 二维数组
 
-ArrSizeExpansionEx(ByRef arr, ByRef RowCount, ByRef ColumnCount, Optional FillValue = Empty)数组扩充大小 满足矩阵运算扩充  **数组下标变1**
-不是数组时填充所有元素,数组元素数量为1时填充所有元素，数组为一行数组时填充所有列，数组为一列或一维数组时填充所有行
+ArrGetRegion(ByRef arr, Optional ByVal Index, Optional ByVal Count = 0, Optional Expansion As Boolean = False) As Variant
+`数组取区域 一维数组
 
-ArrSizeExpansion2(ByRef arr, ByRef ArrSizeCount, Optional FillValue = Empty) 数组扩充大小 所有数组都变成一维  **数组下标变1**  复杂数组计算用
-ArrIndexExpansion(ByRef arr, Optional ByVal RowIndex, Optional ByVal ColumnIndex, Optional FillValue = Empty) 数组扩充索引，当索引超出数组时会被扩充
-Arr2DSetArr2D(ByRef arrL, ByRef arrR, Optional ByVal RowIndex, Optional ByVal ColumnIndex, Optional Expansion As Boolean = False)  数组赋值到数组 二维
-Arr2DSetValues(ByRef arr2D, ByVal RowIndexArr, ByVal ColumnIndexArr, ParamArray Values()) 多个值按RowIndexArr与ColumnIndexArr交叉位置依次赋值到数组  从上到下一行一行写入 二维
-Arr2DSetValues_LtoR(ByRef arr2D, ByVal RowIndexArr, ByVal ColumnIndexArr, ParamArray Values()) 多个值按RowIndexArr与ColumnIndexArr交叉位置依次赋值到数组  从左到右一列一列写入 二维
-ArrSetValues(ByRef arr1D, ByRef IndexArr, ParamArray Values()) 多个值按IndexArr位置依次赋值到数组 一维
-ArrSetEntireColumnValues(ByRef arr2D, ByRef ColumnIndexArr, ParamArray Values()) 赋值到数组一整列 多值对应多列 二维
-ArrSetEntireRowValues(ByRef arr2D, ByRef RowIndexArr, ParamArray Values()) 赋值到数组一整行 多值对应多行 二维
-ArrSetArr(ByRef arrL, ByRef arrR, Optional ByVal Index, Optional Expansion As Boolean = False)  数组赋值到数组 一维
-ArrSetColumn(ByRef arrL2D, ByRef arrR, Optional ByVal ColumnIndex, Optional Expansion As Boolean = False) 数组赋值到数组一列
-ArrSetRow(ByRef arrL2D, ByRef arrR, Optional ByVal RowIndex, Optional Expansion As Boolean = False) 数组赋值到数组一行
-ArrFromIndex(arr, arrIndex) As Variant   按索引数组顺序取回数组值，用来还原排序结果
-ArrFromBoolea(arr, arrBoolea) As Variant 按布尔数组条件=True取回数组值，用来筛选数组
-ArrRandSort(ByVal arr) As Variant  数组随机排序
-ArrSort2D(arr, Index, Optional Order As Boolean = True) As Variant  二维数组稳定排序
-ArrSort2Ds(arr, Indexs, Optional Orders = True) As Variant 二维数组多列稳定排序
-ArrSort1D(arr, Optional Order As Boolean = True) As Variant 一维数组稳定排序
-ArrSort(arr, Optional Order As Boolean = True) As Variant 一维数组稳定排序 返回索引，Order=True 升序排序
+ArrGetRegion_To(ByRef arr, Optional ByVal Index, Optional ByVal IndexTo, Optional Expansion As Boolean = False) As Variant
+`数组取区域 索引到索引 一维数组
+
+ArrSizeExpansion(ByRef arr, ByRef RowCount, Optional ByRef ColumnCount, Optional FillValue = Empty)
+`数组扩充大小  **数组下标变1**
+
+ArrSizeExpansionEx(ByRef arr, ByRef RowCount, ByRef ColumnCount, Optional FillValue = Empty)
+`数组扩充大小 满足矩阵运算扩充  **数组下标变1**
+`不是数组时填充所有元素,数组元素数量为1时填充所有元素，数组为一行数组时填充所有列，数组为一列或一维数组时填充所有行
+
+ArrSizeExpansion2(ByRef arr, ByRef ArrSizeCount, Optional FillValue = Empty)
+`数组扩充大小 所有数组都变成一维  **数组下标变1**  复杂数组计算用
+
+ArrIndexExpansion(ByRef arr, Optional ByVal RowIndex, Optional ByVal ColumnIndex, Optional FillValue = Empty)
+`数组扩充索引，当索引超出数组时会被扩充
+
+Arr2DSetArr2D(ByRef arrL, ByRef arrR, Optional ByVal RowIndex, Optional ByVal ColumnIndex, Optional Expansion As Boolean = False)
+`数组赋值到数组 二维
+
+Arr2DSetValues(ByRef arr2D, ByVal RowIndexArr, ByVal ColumnIndexArr, ParamArray Values())
+`多个值按RowIndexArr与ColumnIndexArr交叉位置依次赋值到数组  从上到下一行一行写入 二维
+
+Arr2DSetValues_LtoR(ByRef arr2D, ByVal RowIndexArr, ByVal ColumnIndexArr, ParamArray Values())
+`多个值按RowIndexArr与ColumnIndexArr交叉位置依次赋值到数组  从左到右一列一列写入 二维
+
+ArrSetValues(ByRef arr1D, ByRef IndexArr, ParamArray Values())
+`多个值按IndexArr位置依次赋值到数组 一维
+
+ArrSetEntireColumnValues(ByRef arr2D, ByRef ColumnIndexArr, ParamArray Values())
+`赋值到数组一整列 多值对应多列 二维
+
+ArrSetEntireRowValues(ByRef arr2D, ByRef RowIndexArr, ParamArray Values())
+`赋值到数组一整行 多值对应多行 二维
+
+ArrSetArr(ByRef arrL, ByRef arrR, Optional ByVal Index, Optional Expansion As Boolean = False)
+`数组赋值到数组 一维
+
+ArrSetColumn(ByRef arrL2D, ByRef arrR, Optional ByVal ColumnIndex, Optional Expansion As Boolean = False)
+`数组赋值到数组一列
+
+ArrSetRow(ByRef arrL2D, ByRef arrR, Optional ByVal RowIndex, Optional Expansion As Boolean = False)
+`数组赋值到数组一行
+
+ArrFromIndex(arr, arrIndex) As Variant
+`按索引数组顺序取回数组值，用来还原排序结果
+
+ArrFromBoolea(arr, arrBoolea) As Variant
+`按布尔数组条件=True取回数组值，用来筛选数组
+
+ArrRandSort(ByVal arr) As Variant
+`数组随机排序
+
+ArrSort2D(arr, Index, Optional Order As Boolean = True) As Variant
+`二维数组稳定排序
+
+ArrSort2Ds(arr, Indexs, Optional Orders = True) As Variant
+`二维数组多列稳定排序
+
+ArrSort1D(arr, Optional Order As Boolean = True) As Variant
+`一维数组稳定排序
+
+ArrSort(arr, Optional Order As Boolean = True) As Variant
+`一维数组稳定排序 返回索引，Order=True 升序排序
 例子：排序arr二维数组
 ArrColumns = ArrGetColumn(arr, 1)  取得arr排序列
 arrIndex = ArrSort(ArrColumns)  对排序列排序返回排序索引
 arrOrder = ArrFromIndex(arr, arrIndex) 根据索引数组取出有序数组
-ArrSortNext(arr, Indexs, Optional Order As Boolean = True) As Variant  对数组多次排序
+
+ArrSortNext(arr, Indexs, Optional Order As Boolean = True) As Variant
+`对数组多次排序
 例子：按1,2列排序
 arrIndex = ArrSort(ArrGetColumn(arr, 1)) 第一次排序
 arrIndex = ArrSortNext(ArrGetColumn(arr, 2), arrIndex) 第2次排序
 arrorder = ArrFromIndex(arr, arrIndex) 返回结果
-ArrCustomSort2D(arrValue, arrKey, Index, Optional IsLike As Boolean = False) As Variant  二维数组自定义排序
-ArrCustomSort(arrValue, arrKey, Optional IsLike As Boolean = False)  自定义排序  CustomSort(排序数组, 自定义序列, Like匹配) 返回索引数组
-ArrInInterval(ByVal arrInterval, Number) As Long 查找Number在arrInterval里的区间位置 位置索引从LBound(arrInterval)到UBound(arr)+1 arrInterval必须升序顺序
-ArrInIntervalEqual(ByVal arrInterval, Number) As Long 查找Number在arrInterval里的区间位置 含等于 位置索引从LBound(arrInterval)到UBound(arr)+1 arrInterval必须升序顺序
+
+ArrCustomSort2D(arrValue, arrKey, Index, Optional IsLike As Boolean = False) As Variant
+`二维数组自定义排序
+
+ArrCustomSort(arrValue, arrKey, Optional IsLike As Boolean = False)
+`自定义排序  CustomSort(排序数组, 自定义序列, Like匹配) 返回索引数组
+
+ArrInInterval(ByVal arrInterval, Number) As Long
+`查找Number在arrInterval里的区间位置 位置索引从LBound(arrInterval)到UBound(arr)+1 arrInterval必须升序顺序
+
+ArrInIntervalEqual(ByVal arrInterval, Number) As Long
+`查找Number在arrInterval里的区间位置 含等于 位置索引从LBound(arrInterval)到UBound(arr)+1 arrInterval必须升序顺序
+
 ArrFindLessIndex(arr_Small, V_Large, Optional ByVal Start) As Long 查找小于v的索引
+
 ArrFindLessIndexRev(arr_Small, V_Large, Optional ByVal Start) As Long 查找小于v的索引 反向
+
 ArrFindLessEqualIndex(arr_Small, V_Large, Optional ByVal Start) As Long 查找小于等于v的索引
+
 ArrFindLessEqualIndexRev(arr_Small, V_Large, Optional ByVal Start) As Long 查找小于等于v的索引 反向
+
 ArrFindGreaterIndex(arr_Large, V_Small, Optional ByVal Start) As Long 查找大于v的索引
+
 ArrFindGreaterIndexRev(arr_Large, V_Small, Optional ByVal Start) As Long 查找大于v的索引 反向
+
 ArrFindGreaterEqualIndex(arr_Large, V_Small, Optional ByVal Start) As Long 查找大于等于v的索引
+
 ArrFindGreaterEqualIndexRev(arr_Large, V_Small, Optional ByVal Start) As Long 查找大于等于v的索引 反向
+
 ArrFindLikeIndex(arr, v, Optional ByVal Start) As Long  查找对应值索引 Like
+
 ArrFindLikeIndexRev(arr, v, Optional ByVal Start) As Long  查找对应值索引反向 Like
+
 ArrFindNotLikeIndex(arr, v, Optional ByVal Start) As Long 查找对应值索引 Not Like
+
 ArrFindNotLikeIndexRev(arr, v, Optional ByVal Start) As Long 查找对应值索引反向 Not Like
+
 ArrFindIndex(arr, v, Optional ByVal Start) As Long  查找对应值索引
+
 ArrFindIndexRev(arr, v, Optional ByVal Start) As Long  查找对应值索引反向
+
 ArrFindNotIndex(arr, v, Optional ByVal Start) As Long 查找不等于的值索引
+
 ArrFindNotIndexRev(arr, v, Optional ByVal Start) As Long 查找不等于的值索引反向
-ArrFindRegIndex(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long  查找对应值索引 正则
-ArrFindRegIndexRev(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long  查找对应值索引 正则 反向
-ArrFindRegNotIndex(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long 查找对应值索引 不满足正则
-ArrFindRegNotIndexRev(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long 查找对应值索引 不满足正则 反向
-ArrFindIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant 二维数组查找索引 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
-ArrFindNotIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant 二维数组查找索引 不等于 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
-ArrFindLikeIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant 二维数组查找索引 Like查找 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
-ArrFindNotLikeIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant 二维数组查找索引 Not Like查找 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
-ArrFindRegIndex2D(ByRef arr2D, Pattern, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True, Optional ByVal ignoreCase As Boolean = False) As Variant 二维数组查找索引 正则 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
-ArrFindRegNotIndex2D(ByRef arr2D, Pattern, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True, Optional ByVal ignoreCase As Boolean = False) As Variant 二维数组查找索引 不满足正则 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
+ArrFindRegIndex(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long
+`查找对应值索引 正则
+
+ArrFindRegIndexRev(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long
+`查找对应值索引 正则 反向
+
+ArrFindRegNotIndex(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long
+`查找对应值索引 不满足正则
+
+ArrFindRegNotIndexRev(arr, Pattern, Optional ByVal Start, Optional ByVal ignoreCase As Boolean = False) As Long
+`查找对应值索引 不满足正则 反向
+
+ArrFindIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant
+`二维数组查找索引 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
+ArrFindNotIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant
+`二维数组查找索引 不等于 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
+ArrFindLikeIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant
+`二维数组查找索引 Like查找 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
+ArrFindNotLikeIndex2D(ByRef arr2D, v, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True) As Variant
+`二维数组查找索引 Not Like查找 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
+ArrFindRegIndex2D(ByRef arr2D, Pattern, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True, Optional ByVal ignoreCase As Boolean = False) As Variant
+`二维数组查找索引 正则 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
+ArrFindRegNotIndex2D(ByRef arr2D, Pattern, Optional ByVal StartRow, Optional ByVal StartColumn, Optional RowFirst As Boolean = True, Optional ByVal ignoreCase As Boolean = False) As Variant
+`二维数组查找索引 不满足正则 找到返回Array(RowIndex, ColumnIndex) 找不到返回空数组
+
 ArrValid_InError(arr) As Boolean    数组数据效验 有错误返回True
-ArrValid_NumericAll(arr, Optional InEmpty As Boolean = True, Optional IsStr As Boolean = True) As Boolean  数组数据效验 全部是数字返回True
-ArrValid_DateAll(arr, Optional IsStr As Boolean = True) As Boolean  数组数据效验 全部是日期返回True
-ArrValid_Reg(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Boolean 数组数据效验满足一个 正则 匹配返回True
-ArrValid_RegAll(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Boolean  数组数据效验满足全部 正则 全部匹配返回True
+
+ArrValid_NumericAll(arr, Optional InEmpty As Boolean = True, Optional IsStr As Boolean = True) As Boolean
+`数组数据效验 全部是数字返回True
+
+ArrValid_DateAll(arr, Optional IsStr As Boolean = True) As Boolean
+`数组数据效验 全部是日期返回True
+
+ArrValid_Reg(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Boolean
+`数组数据效验满足一个 正则 匹配返回True
+
+ArrValid_RegAll(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Boolean
+`数组数据效验满足全部 正则 全部匹配返回True
+
 ArrValid_Repeat(arr) As Boolean 数组数据效验是否有重复 重复返回True
+
 ArrValid_Incremental(ParamArray arr()) As Boolean 数组数据效验是否递增序列
+
 ArrValid_IncrementalEqual(ParamArray arr()) As Boolean 数组数据效验是否递增序列包含相等
+
 ArrValid_Decrement(ParamArray arr()) As Boolean 数组数据效验是否递减序列
+
 ArrValid_DecrementEqual(ParamArray arr()) As Boolean 数组数据效验是否递减序列包含相等
-ArrFilterRepeatCount(arr, Optional CountSmall = 0, Optional CountLarge = 1.79769313486231E+308, Optional CompareMode As CompareMethod = BinaryCompare) As Variant 筛选 重复次数  ,*返回筛选索引*
-ArrFilterRangeInside(arr, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant 筛选 区间 内部 ,*返回筛选索引*
-ArrFilterRangeExternal(arr, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant 筛选 区间 外部 ,*返回筛选索引*
+
+ArrFilterRepeatCount(arr, Optional CountSmall = 0, Optional CountLarge = 1.79769313486231E+308, Optional CompareMode As CompareMethod = BinaryCompare) As Variant
+`筛选 重复次数  ,*返回筛选索引*
+
+ArrFilterRangeInside(arr, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant
+`筛选 区间 内部 ,*返回筛选索引*
+
+ArrFilterRangeExternal(arr, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant
+`筛选 区间 外部 ,*返回筛选索引*
+
 ArrFilterGreater(arr_Large, V_Small) As Variant 筛选 大于V_Small的值 ,*返回筛选索引*
+
 ArrFilterGreaterEqual(arr_Large, V_Small) As Variant 筛选 大于等于V_Small的值 ,*返回筛选索引*
+
 ArrFilterLess(arr_Small, V_Large) As Variant 筛选 小于V_Large的值 ,*返回筛选索引*
+
 ArrFilterLessEqual(arr_Small, V_Large) As Variant 筛选 小于V_Large的值 ,*返回筛选索引*
+
 ArrFilter(arr, ByVal arrv) As Variant   筛选 ,**返回筛选索引**
+
 ArrFilterLike(arr, ByVal arrv) As Variant  筛选like匹配 ,**返回筛选索引**
-ArrFilterReg(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Variant  筛选正则匹配 ,**返回筛选索引**
+
+ArrFilterReg(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Variant
+`筛选正则匹配 ,**返回筛选索引**
+
 ArrFilterRemove(arr, ByVal arrv) As Variant  筛选排除 ,**返回筛选索引**
+
 ArrFilterLikeRemove(arr, ByVal arrv) As Variant  筛选like排除 ,**返回筛选索引**
-ArrFilterRegRemove(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Variant  筛选正则排除 ,**返回筛选索引**
+
+ArrFilterRegRemove(arr, Pattern, Optional ByVal ignoreCase As Boolean = False) As Variant
+`筛选正则排除 ,**返回筛选索引**
+
 ArrDistinct(arr) As Variant 去重 保留开头一个值
+
 ArrDistinctIndex(arr) As Variant 去重，返回索引 保留开头索引
+
 ArrDistinctIndexRev(arr) As Variant 去重，返回索引 保留最后索引
-ArrLBoundToN_1D(arr, Optional StartLBound = 1) As Variant 数组下标变StartLBound 一维数组
-ArrLBoundToN_2D(arr, Optional StartLBound1 = 1, Optional StartLBound2 = 1) As Variant 数组下标变StartLBound1,StartLBound2 二维数组
+
+ArrLBoundToN_1D(arr, Optional StartLBound = 1) As Variant
+`数组下标变StartLBound 一维数组
+
+ArrLBoundToN_2D(arr, Optional StartLBound1 = 1, Optional StartLBound2 = 1) As Variant
+`数组下标变StartLBound1,StartLBound2 二维数组
+
 ArrMap(ByVal arr, EvaluateStr) As Variant  Evaluate修改数组 $表示当前值
-ArrReplace(ByRef arr, FindValueArr, ReplaceValue) As Variant 数组替换数组所有完整元素 FindValueArr支持单值或数组
-ArrErrorClear(ByRef arr, Optional EmptyValue = Empty) As Variant 清除数组错误值
+
+ArrReplace(ByRef arr, FindValueArr, ReplaceValue) As Variant
+`数组替换数组所有完整元素 FindValueArr支持单值或数组
+
+ArrErrorClear(ByRef arr, Optional EmptyValue = Empty) As Variant
+`清除数组错误值
+
 ArrIsValid(ByRef arr) As Boolean  数组是否有效
+
 ArrDimension(ByRef arr) As Long  数组维度
+
 ArrCount(ByRef arr) As Long  数组元素个数
+
 ArrCountRow(ByRef arr) As Long  数组行数
+
 ArrCountColumn(ByRef arr) As Long 数组列数
-ArrCountRowAndColumn(arr, ByRef RowCount, ByRef ColumnCount) 同时计算行列数量用变量RowCount,ColumnCount接收返回值，一维数组ColumnCount=1，不是数组RowCount=ColumnCount=1
+
+ArrCountRowAndColumn(arr, ByRef RowCount, ByRef ColumnCount)
+`同时计算行列数量用变量RowCount,ColumnCount接收返回值，一维数组ColumnCount=1，不是数组RowCount=ColumnCount=1
+
 ArrCountElement(ByVal arr) As Variant 数组标记元素个数，返回总数数组
-ArrCountMergeElement(ByRef arr, Optional EmptyContent = "") As Variant 数组标记合并单元格形式元素个数，返回个数数组
+
+ArrCountMergeElement(ByRef arr, Optional EmptyContent = "") As Variant
+`数组标记合并单元格形式元素个数，返回个数数组
+
 ArrBetween(l, u) As Variant()  创建范围整数数组
+
 ArrCreate(Number, Optional Number2 = 0, Optional FillValue = Empty) As Variant() 创建数组
-ArrCreateRand(l, r, RowCount, Optional ColumnCount = 0) As Variant() 创建随机数数组
-ArrCreateRandDic(l, r, RowCount, Optional ColumnCount = 0) As Variant() 创建随机数数组 不重复随机数
-ArrFillDown(ByRef arr, Optional index = 1, Optional EmptyContent = "") As Variant 空值向下填充  arr一维或二维数组 index二维数组列索引  EmptyContent当做空值的内容
-ArrFillUp(ByRef arr, Optional index = 1, Optional EmptyContent = "") As Variant  空值向上填充  arr一维或二维数组 index二维数组列索引  EmptyContent当做空值的内容
+
+ArrCreateRand(l, r, RowCount, Optional ColumnCount = 0) As Variant()
+`创建随机数数组
+
+ArrCreateRandDic(l, r, RowCount, Optional ColumnCount = 0) As Variant()
+`创建随机数数组 不重复随机数
+
+ArrFillDown(ByRef arr, Optional index = 1, Optional EmptyContent = "") As Variant
+`空值向下填充  arr一维或二维数组 index二维数组列索引  EmptyContent当做空值的内容
+
+ArrFillUp(ByRef arr, Optional index = 1, Optional EmptyContent = "") As Variant
+`空值向上填充  arr一维或二维数组 index二维数组列索引  EmptyContent当做空值的内容
+
 ArrPerspectiveRev(ByRef arrH, ByRef arrV, Optional ByRef arrRegion2D = "") As Variant
-  逆透视 arrH竖标题(可以是多列)  arrV横标题(只能一行) arrRegion2D数据区域(行大小必须是arrH行数 列大小必须是arrV数量)
-ArrPerspective(ByRef arr2D, ByVal VIndex, ByVal DataIndex) As Variant 透视 行列交叉有重复数据时取最后一值 arr2D二维表  VIndex变横标题的列  DataIndex变数据区域的列
-ArrPerspective_Repeating(ByRef arr2D, ByVal VIndex, ByVal DataIndex) As Variant 透视 行列交叉有重复数据时写多行 arr2D二维表  VIndex变横标题的列  DataIndex变数据区域的列
-ArrGroupSum(ByRef arr2D, ByVal ArrGroupIndex, ByVal ArrSumIndex) As Variant 分类求和 arr2D二维表 ArrGroupIndex分组列索引支持数组 ArrSumIndex求和列索引支持数组
-ArrGroupCount(ByRef arr2D, ByVal ArrGroupIndex, ByVal ArrCountIndex, Optional NoEmpty As Boolean = True) As Variant 分类计数 arr2D二维表 ArrGroupIndex分组列索引支持数组 ArrCountIndex计数列索引支持数组 NoEmpty = True计算非空值数量
+`逆透视 arrH竖标题(可以是多列)  arrV横标题(只能一行) arrRegion2D数据区域(行大小必须是arrH行数 列大小必须是arrV数量)
+
+ArrPerspective(ByRef arr2D, ByVal VIndex, ByVal DataIndex) As Variant
+`透视 行列交叉有重复数据时取最后一值 arr2D二维表  VIndex变横标题的列  DataIndex变数据区域的列
+
+ArrPerspective_Repeating(ByRef arr2D, ByVal VIndex, ByVal DataIndex) As Variant
+`透视 行列交叉有重复数据时写多行 arr2D二维表  VIndex变横标题的列  DataIndex变数据区域的列
+
+ArrGroupSum(ByRef arr2D, ByVal ArrGroupIndex, ByVal ArrSumIndex) As Variant
+`分类求和 arr2D二维表 ArrGroupIndex分组列索引支持数组 ArrSumIndex求和列索引支持数组
+
+ArrGroupCount(ByRef arr2D, ByVal ArrGroupIndex, ByVal ArrCountIndex, Optional NoEmpty As Boolean = True) As Variant
+`分类计数 arr2D二维表 ArrGroupIndex分组列索引支持数组 ArrCountIndex计数列索引支持数组 NoEmpty = True计算非空值数量
+
 ArrGroupJoin(ByRef arr2D, ByVal ArrGroupIndex, ByVal ArrJoinIndex, Optional Delimiter = "", Optional OmittedEmpty As Boolean = True) As Variant
-    分类拼接字符串 arr2D二维表 ArrGroupIndex分组列索引支持数组 ArrJoinIndex求和列索引支持数组 Delimiter分隔符 OmittedEmpty忽略空字符串
-ArrGroup_Class(ByRef arr2D, ByVal ArrClassIndex) As Variant 数组分组 按类别 ArrClassIndex分类索引支持数组  返回数组套数组的分组
-ArrGroup_Find_First(ByRef arr2D, ByVal FindIndex, ByVal FindValue) As Variant 数组分组 按查找内容为分组界限 界限放在分组*首行*  FindIndex索引列 FindValue查找内容  返回数组套数组的分组
-ArrGroup_Find_Last(ByRef arr2D, ByVal FindIndex, ByVal FindValue) As Variant  数组分组 按查找内容为分组界限 界限放在分组*末尾*  FindIndex索引列 FindValue查找内容  返回数组套数组的分组
-ArrGroup_Differ(ByRef arr2D, ByVal ArrDifferIndex) As Variant 数组分组 按列上下内容不用为分组界限  ArrDifferIndex不同的列索引支持数组  返回数组套数组的分组
-ArrGroup_Number_Column(ByRef arr2D, ByVal Number) As Variant 数组分组 按列数量  number数量  返回数组套数组的分组
-ArrGroup_Number(ByRef arr2D, ByVal number) As Variant数组分组 按数量  number数量  返回数组套数组的分组
-ArrGroup_Row_First(ByRef arr2D, ByVal ArrRowIndex) As Variant  数组分组 按行索引为界限分组  界限放在分组*首行* ArrRowIndex行索引支持数组  返回数组套数组的分组
-ArrGroup_Row_Last(ByRef arr2D, ByVal ArrRowIndex) As Variant  数组分组 按行索引为界限分组  界限放在分组*末尾* ArrRowIndex行索引支持数组  返回数组套数组的分组
-ArrGroup_Interval(ByVal arr2D, ByVal ColumnIndex, ParamArray ArrInterval()) As Variant 数组分组 按数值区间分组分组  小于不等于被放一组 ArrInterval区间数组  返回数组套数组的分组
-ArrGroup_Interval_Equal(ByVal arr2D, ByVal ColumnIndex, ParamArray ArrInterval()) As Variant 数组分组 按数值区间分组分组  小于等于被放一组 ArrInterval区间数组  返回数组套数组的分组
-ArrGroup_CustomClass(ByVal arr2D, ByVal ColumnIndex, ParamArray arrCustomValue()) As Variant 数组分组 按自定义分类 不匹配的放最后一组 arrCustomValue匹配数组  返回数组套数组的分组
-ArrGroup_CustomClass_Like(ByVal arr2D, ByVal ColumnIndex, ParamArray arrCustomValue()) As Variant 数组分组 按自定义分类Like匹配  不匹配的放最后一组 arrCustomValue匹配数组  返回数组套数组的分组
-ArrGroup_CustomClass_Reg(ByVal arr2D, ByVal ColumnIndex, ParamArray arrCustomPattern()) As Variant 数组分组 按自定义分类 正则匹配  不匹配的放最后一组 arrCustomValue匹配数组  返回数组套数组的分组
+`分类拼接字符串 arr2D二维表 ArrGroupIndex分组列索引支持数组 ArrJoinIndex求和列索引支持数组 Delimiter分隔符 OmittedEmpty忽略空字符串
+
+ArrGroup_Class(ByRef arr2D, ByVal ArrClassIndex) As Variant
+`数组分组 按类别 ArrClassIndex分类索引支持数组  返回数组套数组的分组
+
+ArrGroup_Find_First(ByRef arr2D, ByVal FindIndex, ByVal FindValue) As Variant
+`数组分组 按查找内容为分组界限 界限放在分组*首行*  FindIndex索引列 FindValue查找内容  返回数组套数组的分组
+
+ArrGroup_Find_Last(ByRef arr2D, ByVal FindIndex, ByVal FindValue) As Variant
+`数组分组 按查找内容为分组界限 界限放在分组*末尾*  FindIndex索引列 FindValue查找内容  返回数组套数组的分组
+
+ArrGroup_Differ(ByRef arr2D, ByVal ArrDifferIndex) As Variant
+`数组分组 按列上下内容不用为分组界限  ArrDifferIndex不同的列索引支持数组  返回数组套数组的分组
+
+ArrGroup_Number_Column(ByRef arr2D, ByVal Number) As Variant
+`数组分组 按列数量  number数量  返回数组套数组的分组
+
+ArrGroup_Number(ByRef arr2D, ByVal number) As Variant
+`数组分组 按数量  number数量  返回数组套数组的分组
+
+ArrGroup_Row_First(ByRef arr2D, ByVal ArrRowIndex) As Variant
+`数组分组 按行索引为界限分组  界限放在分组*首行* ArrRowIndex行索引支持数组  返回数组套数组的分组
+
+ArrGroup_Row_Last(ByRef arr2D, ByVal ArrRowIndex) As Variant
+`数组分组 按行索引为界限分组  界限放在分组*末尾* ArrRowIndex行索引支持数组  返回数组套数组的分组
+
+ArrGroup_Interval(ByVal arr2D, ByVal ColumnIndex, ParamArray ArrInterval()) As Variant
+`数组分组 按数值区间分组分组  小于不等于被放一组 ArrInterval区间数组  返回数组套数组的分组
+
+ArrGroup_Interval_Equal(ByVal arr2D, ByVal ColumnIndex, ParamArray ArrInterval()) As Variant
+`数组分组 按数值区间分组分组  小于等于被放一组 ArrInterval区间数组  返回数组套数组的分组
+
+ArrGroup_CustomClass(ByVal arr2D, ByVal ColumnIndex, ParamArray arrCustomValue()) As Variant
+`数组分组 按自定义分类 不匹配的放最后一组 arrCustomValue匹配数组  返回数组套数组的分组
+
+ArrGroup_CustomClass_Like(ByVal arr2D, ByVal ColumnIndex, ParamArray arrCustomValue()) As Variant
+`数组分组 按自定义分类Like匹配  不匹配的放最后一组 arrCustomValue匹配数组  返回数组套数组的分组
+
+ArrGroup_CustomClass_Reg(ByVal arr2D, ByVal ColumnIndex, ParamArray arrCustomPattern()) As Variant
+`数组分组 按自定义分类 正则匹配  不匹配的放最后一组 arrCustomValue匹配数组  返回数组套数组的分组
+
 ArrGroupAgg(ByRef ArrGroup, Optional OmittedNoneArg As Boolean = True, Optional Delimiter = "", Optional OmittedEmpty As Boolean = True, _
         Optional ByRef C1 As GroupAggregateMethod = Group_None, C2, C3,... C46 ) As Variant
-       分组聚合函数  ArrGroup分组函数返回的数组套数组  OmittedNoneArg没有写Cn参数的列是否省略 Delimiter拼接字符分隔符 OmittedEmpty拼接字符串是否忽略空值
-       C1-C46代表数组的1-46列 采用C1:=Group_Sum方式传入聚合模式GroupAggregateMethod  C1-C46传入正数取第N行传入负数取倒数第N行
+`分组聚合函数  ArrGroup分组函数返回的数组套数组  OmittedNoneArg没有写Cn参数的列是否省略 Delimiter拼接字符分隔符 OmittedEmpty拼接字符串是否忽略空值
+`C1-C46代表数组的1-46列 采用C1:=Group_Sum方式传入聚合模式GroupAggregateMethod  C1-C46传入正数取第N行传入负数取倒数第N行
 
 ArrGroupAgg2(ByRef ArrGroup, ArrGroupIndex, ArrAggregateMethod, Optional Delimiter = "", Optional OmittedEmpty As Boolean = True) As Variant
-分组聚合函数 支持一列多种聚合 ArrGroup分组函数返回的数组套数组 ArrGroupIndex聚合列 ArrAggregateMethod对应的聚合模式 Delimiter拼接字符分隔符 OmittedEmpty拼接字符串是否忽略空值
+`分组聚合函数 支持一列多种聚合 ArrGroup分组函数返回的数组套数组 ArrGroupIndex聚合列 ArrAggregateMethod对应的聚合模式 Delimiter拼接字符分隔符 OmittedEmpty拼接字符串是否忽略空值
 
 ArrUnions(ParamArray arr()) As Variant 并集多个  取多个数组元素
+
 ArrUnions_Distinct(ParamArray arr()) As Variant 并集多个  去重
+
 ArrUnions_Sort(ParamArray arr()) As Variant 并集多个  排序
+
 ArrUnions_DistinctSort(ParamArray arr()) As Variant 并集多个  去重排序
+
 ArrUnion(ByRef arr1, ByRef arr2) As Variant 并集 取两个数组元素
+
 ArrUnion_Distinct(ByRef arr1, ByRef arr2) As Variant 并集 去重
+
 ArrUnion_Sort(ByRef arr1, ByRef arr2, Optional Order As Boolean = True) As Variant 并集 排序
+
 ArrUnion_DistinctSort(ByRef arr1, ByRef arr2, Optional Order As Boolean = True) As Variant 并集 去重排序
+
 ArrIntersects(ParamArray arr()) As Variant  交集多个  取多个数组元素
+
 ArrIntersects_Distinct(ParamArray arr()) As Variant 交集多个  去重
+
 ArrIntersects_arr1(ParamArray arr()) As Variant 交集多个 取第一个数组元素
+
 ArrIntersects_arr1_Index(ParamArray arr()) As Variant 交集多个 取第一个数组元素
+
 ArrIntersect(ByRef arr1, ByRef arr2) As Variant 交集 取两个数组元素
+
 ArrIntersect_Distinct(ByRef arr1, ByRef arr2) As Variant 交集 去重
+
 ArrIntersect_arr1(ByRef arr1, ByRef arr2) As Variant 交集 取arr1元素
+
 ArrIntersect_arr2(ByRef arr1, ByRef arr2) As Variant 交集 取arr2元素
+
 ArrIntersect_arr1_Index(ByRef arr1, ByRef arr2) As Variant 交集 取arr1索引
+
 ArrIntersect_arr2_Index(ByRef arr1, ByRef arr2) As Variant 交集 取arr2索引
-ArrExcepts_Single(ParamArray arr()) As Variant 差集多个  取多个数组元素(保留数组中其他数组没有的元素)[1,2,3,4,5,5][1,2,3][2,3,4,6]->[5,5,6]
-ArrExcepts_RemoveAllIntersect(ParamArray arr()) As Variant 差集多个  取多个数组元素(去除所有数组都包含的元素)[1,2,3,4,5,5][1,2,3][2,3,4,6]->去除共有元素2,3得到[1,4,5,5,1,4,6]
+
+ArrExcepts_Single(ParamArray arr()) As Variant
+`差集多个  取多个数组元素(保留数组中其他数组没有的元素)[1,2,3,4,5,5][1,2,3][2,3,4,6]->[5,5,6]
+
+ArrExcepts_RemoveAllIntersect(ParamArray arr()) As Variant
+`差集多个  取多个数组元素(去除所有数组都包含的元素)[1,2,3,4,5,5][1,2,3][2,3,4,6]->去除共有元素2,3得到[1,4,5,5,1,4,6]
+
 ArrExcepts_arr1(ParamArray arr()) As Variant 差集多个  取第一个元素
+
 ArrExcepts_arr1_Index(ParamArray arr()) As Variant 差集多个 取第一个数组元素索引
+
 ArrExcept(ByRef arr1, ByRef arr2) As Variant 差集 取两个数组元素
+
 ArrExcept_arr1(ByRef arr1, ByRef arr2) As Variant 差集 取arr1元素
+
 ArrExcept_arr2(ByRef arr1, ByRef arr2) As Variant 差集 取arr2元素
+
 ArrExcept_arr1_Index(ByRef arr1, ByRef arr2) As Variant 差集 取arr1索引
+
 ArrExcept_arr2_Index(ByRef arr1, ByRef arr2) As Variant 差集 取arr2索引
-ArrTitleToIndex(ByRef arrTitle, ByRef arrOrder) As Variant  arrTitle(一维)按arrOrder(一维)返回对应的顺序的标题索引数组,返回的数组为arrTitle索引不匹配位置返回(LBound-1),返回的数组大小与arrOrder相同
+
+ArrTitleToIndex(ByRef arrTitle, ByRef arrOrder) As Variant
+`arrTitle(一维)按arrOrder(一维)返回对应的顺序的标题索引数组,返回的数组为arrTitle索引不匹配位置返回(LBound-1),返回的数组大小与arrOrder相同
+
 ArrIFs(ParamArray Calculates()) As Variant 数组IFs判断计算 ArrIFs(条件,值,条件,值,否则值)
+
 ArrBoolea_And(ParamArray Calculates()) As Variant 数组布尔且计算
+
 ArrBoolea_Or(ParamArray Calculates()) As Variant 数组布尔或计算
+
 ArrBoolea_Not(ByVal arr) As Variant 数组布尔非计算
-ArrComp_RangeInside(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant 数组区间比较计算 内部
-ArrComp_RangeExternal(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant 数组区间比较计算 外部
+
+ArrComp_RangeInside(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant
+`数组区间比较计算 内部
+
+ArrComp_RangeExternal(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant
+`数组区间比较计算 外部
+
 ArrComp_Like(ByVal arr, ByVal arr2) As Variant 数组比较Like计算
+
 ArrComp_NotLike(ByVal arr, ByVal arr2) As Variant 数组比较Not Like计算
+
 ArrComp_Equal(ByVal arr, ByVal arr2) As Variant 数组比较等于计算
+
 ArrComp_NotEqual(ByVal arr, ByVal arr2) As Variant 数组比较不等于计算
+
 ArrComp_Size(ByVal arr_Large, ByVal arr_Small) As Variant 数组比较大小计算
+
 ArrComp_SizeEqual(ByVal arr_Large, ByVal arr_Small) As Variant 数组比较大小包含等于计算
+
 ArrMath_Add(ParamArray Calculates()) As Variant 数组加法计算
+
 ArrMath_Sub(ParamArray Calculates()) As Variant 数组减法计算
+
 ArrMath_Multipli(ParamArray Calculates()) As Variant 数组乘法计算
+
 ArrMath_Division(ParamArray Calculates()) As Variant 数组除法计算
+
 ArrMath_Power(ParamArray Calculates()) As Variant 数组乘方计算
+
 ArrMath_Join(ParamArray Calculates()) As Variant 数组连接计算
+
 ArrMath_Round(ByVal arr, number, Optional ColumnIndex = 1) As Variant 数组四舍五入
-ArrMath_Val(ByVal arr, Optional ColumnIndexArr = 1) As Variant
+
+ArrMath_Val(ByVal arr, Optional ColumnIndexArr = 1) As Variant 数组转数字
+
 ArrMath_Abs(ByVal arr, Optional ColumnIndexArr = 1) As Variant 数组绝对值Abs
+
 ArrMath_Format(ByVal arr, Pormat, Optional ColumnIndex = 1) As Variant 数组Format
+
 ArrStr_Ucase(ByVal arr, Optional ColumnIndexArr = 1) As Variant 数组转大写
+
 ArrStr_Lcase(ByVal arr, Optional ColumnIndexArr = 1) As Variant 数组转小写
 
-ArrStr_Split(ByVal arr, Delimiter, Optional ColumnIndexArr = 1) As Variant  数组循环拆分字符串 返回数组套数组
+ArrStr_Split(ByVal arr, Delimiter, Optional ColumnIndexArr = 1) As Variant
+`数组循环拆分字符串 返回数组套数组
+
 ArrStr_Replace(ByVal arr, FindStr, ReplaceStr, Optional ColumnIndex = 1) As Variant 数组替换
+
 ArrStr_ReplaceAll(ByVal arr, FindStr, ReplaceStr) As Variant 数组替换数组所有内容
+
 ArrStr_RegexSearch(ByVal arr, Pattern, Optional RegIndex = 0, Optional ColumnIndex = 1, _
-        Optional ByVal ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant 数组正则取值
+        Optional ByVal ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant
+`数组正则取值
  
 ArrStr_RegexSearchs(ByVal arr, Pattern, Optional ColumnIndex = 1, _
-        Optional ByVal ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant 数组正则取所有值返回数组套数组
+        Optional ByVal ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant
+`数组正则取所有值返回数组套数组
         
 ArrStr_RegexCount(ByVal arr, Pattern, Optional ByVal ColumnIndexArr = 1, Optional ByVal NumberAdd = 0, _
-         Optional ByRef ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant 数组正则返回匹配数量
+         Optional ByRef ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant
+`数组正则返回匹配数量
          
 ArrStr_RegexReplace(ByVal arr, Pattern, ReplaceStr, Optional ColumnIndex = 1, _
-        Optional ByVal ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant 数组正则替换
+        Optional ByVal ignoreCase As Boolean = False, Optional ByVal multiline As Boolean = False) As Variant
+`数组正则替换
  
-ArrStr_Mid(ByVal arr, start, Optional length, Optional ColumnIndex = 1) As Variant 数组MID
+ArrStr_Mid(ByVal arr, start, Optional length, Optional ColumnIndex = 1) As Variant
+`数组MID
+
 ArrDate_DateSub(Interval, Date1, Date2) As Variant 数组日期差值 参照DateDiff
+
 ArrDate_Year(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取年
+
 ArrDate_Month(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取月
+
 ArrDate_Day(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取天
+
 ArrDate_Weekday(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取星期
+
 ArrTime_Hour(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取小时
+
 ArrTime_Minute(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取分钟
+
 ArrTime_Second(ByVal arr, Optional ColumnIndex = 1) As Variant 数组取秒
-ArrSerialNumber(ByVal arr, Optional ColumnIndex = 1, Optional StartNumber = 1) As Variant 加序号 传入数组返回1++序号
-ArrSerialNumberCalssSelf(ByVal arr, Optional ByVal InputIndex = 1, Optional ByVal CalssIndex = 1, Optional StartNumber = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Variant 加序号 按数组不同内容 相同内容1++ 返回1++序号
-ArrSerialNumberCalss(ByVal arr, Optional ByVal InputIndex = 1, Optional ByVal CalssIndex = 1, Optional StartNumber = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Variant 加序号 按数组不同内容1++ 返回1++序号
-ArrMaxIndex(ByRef arr, Optional ColumnIndex = 1, Optional Front As Boolean = True) As Long 数组取最大值索引 ColumnIndex 二维数组列索引  Front = True 最前的索引
-ArrMinIndex(ByRef arr, Optional ColumnIndex = 1, Optional Front As Boolean = True) As Long 数组取最小值索引 ColumnIndex 二维数组列索引  Front = True 最前的索引
+
+ArrSerialNumber(ByVal arr, Optional ColumnIndex = 1, Optional StartNumber = 1) As Variant
+`加序号 传入数组返回1++序号
+
+ArrSerialNumberCalssSelf(ByVal arr, Optional ByVal InputIndex = 1, Optional ByVal CalssIndex = 1, Optional StartNumber = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Variant
+`加序号 按数组不同内容 相同内容1++ 返回1++序号
+
+ArrSerialNumberCalss(ByVal arr, Optional ByVal InputIndex = 1, Optional ByVal CalssIndex = 1, Optional StartNumber = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Variant
+`加序号 按数组不同内容1++ 返回1++序号
+
+ArrMaxIndex(ByRef arr, Optional ColumnIndex = 1, Optional Front As Boolean = True) As Long
+`数组取最大值索引 ColumnIndex 二维数组列索引  Front = True 最前的索引
+
+ArrMinIndex(ByRef arr, Optional ColumnIndex = 1, Optional Front As Boolean = True) As Long
+`数组取最小值索引 ColumnIndex 二维数组列索引  Front = True 最前的索引
+
 ArrSum(ByRef arr) As Double  数组求和
+
 ArrMax(ByRef arr) As Double  数组求最大值
+
 ArrMin(ByRef arr) As Double  数组求最小值
+
 ArrCountNoEmpty(ByRef arr) As Double 数组计算非空值数量
+
 ArrSumColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1) As Variant 数组按列求和
+
 ArrSumRow(ByRef arr2D, Optional ByVal RowIndexArr = 1) As Variant 数组按行求和
+
 ArrMaxColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1) As Variant 数组按列求最大值
+
 ArrMaxRow(ByRef arr2D, Optional ByVal RowIndexArr = 1) As Variant 数组按行求最大值
+
 ArrMinColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1) As Variant 数组按列求最小值
+
 ArrMinRow(ByRef arr2D, Optional ByVal RowIndexArr = 1) As Variant 数组按行求最小值
-ArrJoinColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional ByRef Delimiter = "", Optional OmittedEmpty As Boolean = True) As Variant 数组按列拼接字符串
-ArrJoinRow(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional ByRef Delimiter = "", Optional OmittedEmpty As Boolean = True) As Variant 数组按行拼接字符串
-ArrCountNoEmptyColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1) As Variant 数组按列计算非空值数量
-ArrCountNoEmptyRow(ByRef arr2D, Optional ByVal RowIndexArr = 1) As Variant 数组按行计算非空值数量
-ArrCountClassColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional EmptyContent = "", Optional CompareMode As CompareMethod = BinaryCompare) As Variant 数组按列计算种类数量
-ArrCountClassRow(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional EmptyContent = "", Optional CompareMode As CompareMethod = BinaryCompare) As Variant 数组按行计算种类数量
-ArrAverageColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional NumDigitsAfterDecimal As Long = 2) As Variant 数组按列计算平均值  NumDigitsAfterDecimal舍入小数位数
-ArrAverageRow(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional NumDigitsAfterDecimal As Long = 2) As Variant 数组按行计算平均值  NumDigitsAfterDecimal舍入小数位数
-ArrAverage(ByRef arr, Optional NumDigitsAfterDecimal As Long = 2) As Double 数组计算求平均值  NumDigitsAfterDecimal舍入小数位数
-ArrMoveUp(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional EmptyContent = "") As Variant 空值移动 向上
-ArrMoveDown(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional EmptyContent = "") As Variant 空值移动 向下
-ArrMoveLeft(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional EmptyContent = "") As Variant 空值移动 向左
-ArrMoveRight(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional EmptyContent = "") As Variant 空值移动 向右
+
+ArrJoinColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional ByRef Delimiter = "", Optional OmittedEmpty As Boolean = True) As Variant
+`数组按列拼接字符串
+
+ArrJoinRow(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional ByRef Delimiter = "", Optional OmittedEmpty As Boolean = True) As Variant
+`数组按行拼接字符串
+
+ArrCountNoEmptyColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1) As Variant
+`数组按列计算非空值数量
+
+ArrCountNoEmptyRow(ByRef arr2D, Optional ByVal RowIndexArr = 1) As Variant
+`数组按行计算非空值数量
+
+ArrCountClassColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional EmptyContent = "", Optional CompareMode As CompareMethod = BinaryCompare) As Variant
+`数组按列计算种类数量
+
+ArrCountClassRow(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional EmptyContent = "", Optional CompareMode As CompareMethod = BinaryCompare) As Variant
+`数组按行计算种类数量
+
+ArrAverageColumn(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional NumDigitsAfterDecimal As Long = 2) As Variant
+`数组按列计算平均值  NumDigitsAfterDecimal舍入小数位数
+
+ArrAverageRow(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional NumDigitsAfterDecimal As Long = 2) As Variant
+`数组按行计算平均值  NumDigitsAfterDecimal舍入小数位数
+
+ArrAverage(ByRef arr, Optional NumDigitsAfterDecimal As Long = 2) As Double
+`数组计算求平均值  NumDigitsAfterDecimal舍入小数位数
+
+ArrMoveUp(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional EmptyContent = "") As Variant
+`空值移动 向上
+
+ArrMoveDown(ByRef arr2D, Optional ByVal ColumnIndexArr = 1, Optional EmptyContent = "") As Variant
+`空值移动 向下
+
+ArrMoveLeft(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional EmptyContent = "") As Variant
+`空值移动 向左
+
+ArrMoveRight(ByRef arr2D, Optional ByVal RowIndexArr = 1, Optional EmptyContent = "") As Variant
+`空值移动 向右
+
 ArrMove(ByRef arr1D, Optional EmptyContent = "") As Variant 空值移动 一维数组 正向
+
 ArrMoveRev(ByRef arr1D, Optional EmptyContent = "") As Variant 空值移动 一维数组 反向
+
 ArrMove_Index(ByRef arr1D, Optional EmptyContent = "") As Variant 空值移动 一维数组 正向 返回索引
+
 ArrMoveRev_Index(ByRef arr1D, Optional EmptyContent = "") As Variant 空值移动 一维数组 反向 返回索引
+
 ArrScroll(ByRef arr, Index) As Variant 数组滚动 正向 Index索引滚动到开头
+
 ArrScrollRev(ByRef arr, Index) As Variant 数组滚动 反向 Index索引滚动到末尾
+
 ArrScroll_Index(ByRef arr, Index) As Variant 数组滚动 正向 Index索引滚动到开头 返回索引
+
 ArrScrollRev_Index(ByRef arr, Index) As Variant 数组滚动 反向 Index索引滚动到末尾 返回索引
+
 ArrScrollColumn(ByRef arr2D, Index) As Variant 二维数组列滚动 正向 Index索引滚动到开头
+
 ArrScrollColumnRev(ByRef arr2D, Index) As Variant 二维数组列滚动 反向 Index索引滚动到末尾
+
 ArrScrollColumn_Index(ByRef arr2D, Index) As Variant 二维数组列滚动  正向 Index索引滚动到开头 返回索引
+
 ArrScrollColumnRev_Index(ByRef arr2D, Index) As Variant 二维数组列滚动 反向 Index索引滚动到末尾 返回索引
+
 ArrCombinCon(arr, r) 组合  arr 一维数组 r抽取数量
+
 ArrPermutCon(arr, r) 排列  arr 一维数组 r抽取数量
 ```
 矩阵-------------------------------------------------------------------------------------------------------------------------------------
