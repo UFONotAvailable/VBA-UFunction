@@ -742,116 +742,221 @@ ArrPermutCon(arr, r) 排列  arr 一维数组 r抽取数量
 矩阵-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 Matrix_Add(ParamArray Calculates()) As Variant 矩阵加法计算
+
 Matrix_Sub(ParamArray Calculates()) As Variant 矩阵减法计算
+
 Matrix_Multipli(ParamArray Calculates()) As Variant 矩阵乘法计算
+
 Matrix_Division(ParamArray Calculates()) As Variant 矩阵除法计算
+
 Matrix_Power(ParamArray Calculates()) As Variant 矩阵乘方计算
+
 Matrix_Join(ParamArray Calculates()) As Variant 矩阵连接计算
+
 Matrix_Comp_Equal(ByRef arr, ByRef arr2) As Variant 矩阵比较等于
+
 Matrix_Comp_NotEqual(ByRef arr, ByRef arr2) As Variant 矩阵比较不等于
+
 Matrix_Comp_Size(ByRef arr_Large, ByRef arr_Small) As Variant 矩阵比较大小
+
 Matrix_Comp_SizeEqual(ByRef arr_Large, ByRef arr_Small) As Variant 矩阵比较大小包含等于
-Matrix_Comp_RangeInside(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant 矩阵区间比较计算 内部
-Matrix_Comp_RangeExternal(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant 矩阵区间比较计算 外部
+
+Matrix_Comp_RangeInside(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant
+.`矩阵区间比较计算 内部
+
+Matrix_Comp_RangeExternal(ByRef arr, ByRef arrL, ByRef arrR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Variant
+`矩阵区间比较计算 外部
+
 Matrix_Comp_Like(ByRef arr, ByRef arr2) As Variant 矩阵比较Like
+
 Matrix_Comp_NotLike(ByRef arr, ByRef arr2) As Variant 矩阵比较Not Like
+
 Matrix_Boolea_And(ParamArray Calculates()) As Variant 矩阵布尔且计算
+
 Matrix_Boolea_Or(ParamArray Calculates()) As Variant 矩阵布尔或计算
+
 Matrix_Boolea_Not(ByRef arr) As Variant 矩阵布尔非计算
+
 Matrix_IF(Expression, TruePart, FalsePart) As Variant 矩阵IF
-Matrix_IFs(ParamArray Calculates()) As Variant 矩阵IFs
-Matrix_Str_Mid(String1, Start, Optional Length) As Variant 矩阵Mid 矩阵参数：String1, Start, Length
-Matrix_Str_Left(String1, Length) As Variant 矩阵Left 矩阵参数：String1, Length
-Matrix_Str_Right(String1, Length) As Variant 矩阵Right 矩阵参数：String1, Length
-Matrix_Str_InStr(StringLarge, StringSmall, Optional Start = 1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant 矩阵InStr 矩阵参数：StringLarge, StringSmall, Start
-Matrix_Str_InStrRev(StringLarge, StringSmall, Optional Start = -1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant 矩阵InStr 矩阵参数：StringLarge, StringSmall, Start
-Matrix_Str_Len(ByRef String1) As Variant 矩阵Len 矩阵参数：String1
-Matrix_Str_Replace(Expression, Find, Replace, Optional Start = 1, Optional Count = -1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant 矩阵替换 矩阵参数：Expression, Find, Replace
-Matrix_DateSub(Interval, Date1, Date2) As Variant 矩阵日期间隔 参照DateDiff 矩阵参数：Interval, Date1, Date2
+
+Matrix_IFs(ParamArray Calculates()) As Variant
+矩阵IFs Expression1, TruePart1, Expression2, TruePart2, Expression3, TruePart3,... , ExpressionN, TruePartN, FalsePart
+
+Matrix_Str_Mid(String1, Start, Optional Length) As Variant
+`矩阵Mid 矩阵参数：String1, Start, Length
+
+Matrix_Str_Left(String1, Length) As Variant
+`矩阵Left 矩阵参数：String1, Length
+
+Matrix_Str_Right(String1, Length) As Variant
+`矩阵Right 矩阵参数：String1, Length
+
+Matrix_Str_InStr(StringLarge, StringSmall, Optional Start = 1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant
+`矩阵InStr 矩阵参数：StringLarge, StringSmall, Start
+
+Matrix_Str_InStrRev(StringLarge, StringSmall, Optional Start = -1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant
+`矩阵InStr 矩阵参数：StringLarge, StringSmall, Start
+
+Matrix_Str_Len(ByRef String1) As Variant
+`矩阵Len 矩阵参数：String1
+
+Matrix_Str_Replace(Expression, Find, Replace, Optional Start = 1, Optional Count = -1, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant
+`矩阵替换 矩阵参数：Expression, Find, Replace
+
+Matrix_DateSub(Interval, Date1, Date2) As Variant
+`矩阵日期间隔 参照DateDiff 矩阵参数：Interval, Date1, Date2
 ```
 字符串-----------------------------------------------------------------------------------------------------------------------------------
 ```VB
 StringBuilder(Optional ByRef s) As Variant  传参则添加，不传参则取值或初始化
 StringBuilder1 , StringBuilder2, StringBuilder3 多个StringBuilder
-StrJoinArr2D(ByRef arr2D, Optional Delimiter = "", Optional OmittedEmpty As Boolean = True, Optional RowFirst As Boolean = True) As String 二维数组拼接
-StrJoin_ArrDelimiter(ByRef arr, ParamArray ArrDelimiter()) As String 数组交错拼接
-StrStrLike(str1, LikeStr) As Boolean  Like匹配
-StrLeft(String1, Length) As String 支持负Length的Left
-StrRight(String1, Length) As String 支持负Length的Right
-StrMid(String1, ByVal Start, ByVal Length) As String 支持负Start负Length的Mid
-StrMidBetween(String1, ByVal Start, Optional ByVal EndIndex = 0) As String 起始结束取字符串
-StrGetLeft(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String  取str左边内容，从左查找
-StrGetLeftRev(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String  取str左边内容，从右查找
-StrGetRight(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String  取str右边内容，从左查找
-StrGetRightRev(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String  取str右边内容，从右查找
-StrGetCentre(String1, str1, str2, Optional SearchType As SearchDirection = LeftLeft) As String 取两个str中间内容
-StrTrimChr(String1, Optional Chrs = " ") As String 按Chrs里的字符去除两端字符串
-StrLTrimChr(String1, Optional Chrs = " ") As String 按Chrs里的字符去除左端字符串
-StrRTrimChr(String1, Optional Chrs = " ") As String 按Chrs里的字符去除右端字符串
-StrRepeat(ByVal string1, ByVal numberOfRepeats As Long) As String   重复字符串
+
+StrJoinArr2D(ByRef arr2D, Optional Delimiter = "", Optional OmittedEmpty As Boolean = True, Optional RowFirst As Boolean = True) As String
+`二维数组拼接
+
+StrJoin_ArrDelimiter(ByRef arr, ParamArray ArrDelimiter()) As String
+`数组交错拼接
+
+StrStrLike(str1, LikeStr) As Boolean
+`Like匹配
+
+StrLeft(String1, Length) As String
+`支持负Length的Left
+
+StrRight(String1, Length) As String
+`支持负Length的Right
+
+StrMid(String1, ByVal Start, ByVal Length) As String
+`支持负Start负Length的Mid
+
+StrMidBetween(String1, ByVal Start, Optional ByVal EndIndex = 0) As String
+`起始结束取字符串
+
+StrGetLeft(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String
+`取str左边内容，从左查找
+
+StrGetLeftRev(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String
+`取str左边内容，从右查找
+
+StrGetRight(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String
+`取str右边内容，从左查找
+
+StrGetRightRev(str1, str2, Optional Compare As VbCompareMethod = vbBinaryCompare) As String
+`取str右边内容，从右查找
+
+StrGetCentre(String1, str1, str2, Optional SearchType As SearchDirection = LeftLeft) As String
+`取两个str中间内容
+
+StrTrimChr(String1, Optional Chrs = " ") As String
+`按Chrs里的字符去除两端字符串
+
+StrLTrimChr(String1, Optional Chrs = " ") As String
+`按Chrs里的字符去除左端字符串
+
+StrRTrimChr(String1, Optional Chrs = " ") As String
+`按Chrs里的字符去除右端字符串
+
+StrRepeat(ByVal string1, ByVal numberOfRepeats As Long) As String
+`重复字符串
+
 StrReplaces(Expression, Finds, Replaces, Optional Counts = -1, _
-      Optional Compare As VbCompareMethod = vbBinaryCompare) As String 批量替换 Finds,Replaces,Counts支持数组 StrReplaces("aabca",{"aa","a"},{"a","e"})->abce
-StrReplaceChr(ByVal String1, StrKey, StrItem) As String 按StrKey里的字符 替换对应位置的StrItem  StrReplaceChr("aabbccdd","abc","123")->112233dd
-StrReplacePlaceholder(ByVal String1, placeholder, ParamArray ValueStrs()) As String 替换占位符placeholder    StrReplacePlaceholder("a%b%c", "%", 1, 2) "a1b2c"
-StrReplaceIndex(String1, ReplaceStr, ByVal Start, ByVal Length) As String 按索引位置替换
+      Optional Compare As VbCompareMethod = vbBinaryCompare) As String
+`批量替换 Finds,Replaces,Counts支持数组 StrReplaces("aabca",{"aa","a"},{"a","e"})->abce
+
+StrReplaceChr(ByVal String1, StrKey, StrItem) As String
+`按StrKey里的字符 替换对应位置的StrItem  StrReplaceChr("aabbccdd","abc","123")->112233dd
+
+StrReplacePlaceholder(ByVal String1, placeholder, ParamArray ValueStrs()) As String
+`替换占位符placeholder    StrReplacePlaceholder("a%b%c", "%", 1, 2) "a1b2c"
+
+StrReplaceIndex(String1, ReplaceStr, ByVal Start, ByVal Length) As String
+`按索引位置替换
+
 Str_Split(ByVal Expression, Optional Delimitre = "", Optional Limit As Long = -1, Optional Compare As VbCompareMethod = vbBinaryCompare) As String()
-    拆分字符串 支持多个分割符
-Str_SplitMatch(String1, ParamArray Delimitre()) As Variant 处理 "序号=1,名称=abc,数量=1" 类型的数据，Str_SplitMatch("序号=1,名称=abc,数量=1", "序号=",",名称=",",数量=")返回数组，数组(0)是"序号="左边内容
-Str_Split2D(ByVal string1, DelimitreRow, DelimitreColumn, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant 字符串拆分二维数组
-StrReg_Split(ByVal Expression, ByVal Pattern As Variant, Optional ByVal ignoreCase As Boolean = True) As Variant 正则拆分
-PinYin(Txt As Variant, Optional Delimiter = " ") As String  简单拼音，可以用来写拼音搜索 注：多音字和生僻字，可能不准
-PinYinInitial(Txt As Variant) As String  拼音开头
-StrFindSimilar(FindStr, arr, Optional Similarity As Double = 60) As Long  编辑距离相似度算法 包含字符串顺序 查找FindStr在arr位置 Similarity为最小相似度
-StrFindCosineSimilar(FindStr, arr, Optional Similarity As Double = 60) As Long  余弦相似度算法 忽略字符串顺序 查找FindStr在arr位置 Similarity为最小相似度
-StrSimilar(s1, s2) As Double  编辑距离相似度算法 判断字符串S1、S2的相似度,包含字符串顺序,相似度区间为0-100,100为完全一致
-StrCosineSimilar(strA, strB) As Double  余弦相似度算法 判断字符串S1、S2的相似度,忽略字符串顺序,相似度区间为0-100,100为完全一致
+`拆分字符串 支持多个分割符
+
+Str_SplitMatch(String1, ParamArray Delimitre()) As Variant
+`处理 "序号=1,名称=abc,数量=1" 类型的数据，Str_SplitMatch("序号=1,名称=abc,数量=1", "序号=",",名称=",",数量=")返回数组，数组(0)是"序号="左边内容
+
+Str_Split2D(ByVal string1, DelimitreRow, DelimitreColumn, Optional Compare As VbCompareMethod = vbBinaryCompare) As Variant
+`字符串拆分二维数组
+
+StrReg_Split(ByVal Expression, ByVal Pattern As Variant, Optional ByVal ignoreCase As Boolean = True) As Variant
+`正则拆分
+
+PinYin(Txt As Variant, Optional Delimiter = " ") As String
+`简单拼音，可以用来写拼音搜索 注：多音字和生僻字，可能不准
+
+PinYinInitial(Txt As Variant) As String
+`拼音开头
+
+StrFindSimilar(FindStr, arr, Optional Similarity As Double = 60) As Long
+`编辑距离相似度算法 包含字符串顺序 查找FindStr在arr位置 Similarity为最小相似度
+
+StrFindCosineSimilar(FindStr, arr, Optional Similarity As Double = 60) As Long
+`余弦相似度算法 忽略字符串顺序 查找FindStr在arr位置 Similarity为最小相似度
+
+StrSimilar(s1, s2) As Double
+`编辑距离相似度算法 判断字符串S1、S2的相似度,包含字符串顺序,相似度区间为0-100,100为完全一致
+
+StrCosineSimilar(strA, strB) As Double
+`余弦相似度算法 判断字符串S1、S2的相似度,忽略字符串顺序,相似度区间为0-100,100为完全一致
+
 StrRegexSearch( _
     ByRef string1, _
     ByRef Pattern, _
     Optional ByRef Index = 0, _
     Optional ByRef All As Boolean = True, _
     Optional ByRef ignoreCase As Boolean = False, _
-    Optional ByRef multiline As Boolean = False) As Variant正则取单个值
+    Optional ByRef multiline As Boolean = False) As Variant
+`正则取单个值
  
 StrRegexSearchs( _
     ByRef string1, _
     ByRef Pattern, _
     Optional ByRef All As Boolean = True, _
     Optional ByRef ignoreCase As Boolean = False, _
-    Optional ByRef multiline As Boolean = False) As Variant()  正则取所有匹配，返回数组
+    Optional ByRef multiline As Boolean = False) As Variant()
+`正则取所有匹配，返回数组
  
 StrRegexSearchOne( _
     ByRef string1, _
     ByRef Pattern, _
-    Optional ByRef ignoreCase As Boolean = False) As String  正则取第一个值
+    Optional ByRef ignoreCase As Boolean = False) As String
+`正则取第一个值
  
 RegexInStr( _
     ByRef string1, _
     ByRef Pattern, _
-    Optional ByRef ignoreCase As Boolean = False) As Long  正则查找位置
+    Optional ByRef ignoreCase As Boolean = False) As Long
+`正则查找位置
  
 StrRegexInStrRev( _
     ByRef string1, _
     ByRef Pattern, _
-    Optional ByRef ignoreCase As Boolean = False) As Long  正则查找位置 反向
+    Optional ByRef ignoreCase As Boolean = False) As Long
+`正则查找位置 反向
  
 StrRegexSearchSub( _
         ByRef string1, _
         ByRef Pattern, _
         Optional ByRef All As Boolean = True, _
         Optional ByRef ignoreCase As Boolean = False, _
-        Optional ByRef multiline As Boolean = False) As Variant() 正则取所有组匹配，返回正则里的()假二维数组
+        Optional ByRef multiline As Boolean = False) As Variant()
+`正则取所有组匹配，返回正则里的()假二维数组
  
 RegexCount( _
         ByRef string1, _
         ByRef Pattern, _
         Optional ByRef ignoreCase As Boolean = False, _
-        Optional ByRef multiline As Boolean = False) As Long  正则计数
+        Optional ByRef multiline As Boolean = False) As Long
+`正则计数
  
 StrRegexTest( _
     ByRef string1, _
     ByRef Pattern, _
-    Optional ByRef ignoreCase As Boolean = False) As Boolean 正则验证
+    Optional ByRef ignoreCase As Boolean = False) As Boolean
+`正则验证
  
 StrRegexReplace( _
     ByRef string1, _
@@ -859,94 +964,212 @@ StrRegexReplace( _
     ByRef replacementString As String, _
     Optional ByRef All As Boolean = True, _
     Optional ByRef ignoreCase As Boolean = False, _
-    Optional ByRef multiline As Boolean = False) As String  正则替换
+    Optional ByRef multiline As Boolean = False) As String
+`正则替换
  
-StrFormatter(ByVal formatString, ParamArray textArray() As Variant) As String  模版字符串 Formatter("姓名：{1},年龄：{2}","UFO",18)  返回"姓名：UFO,年龄：18"
-ByteToStr(arrByte, strCharset As String) As String 流数据转成指定编码的文本 "Unicode", "GB2312", "UTF-8", "ASCII", "GBK"
-StrToByte(strText As String, strCharset As String) 文本按指定编码转为流数据 "Unicode", "GB2312", "UTF-8", "ASCII", "GBK"
+StrFormatter(ByVal formatString, ParamArray textArray() As Variant) As String
+`模版字符串 Formatter("姓名：{1},年龄：{2}","UFO",18)  返回"姓名：UFO,年龄：18"
+
+ByteToStr(arrByte, strCharset As String) As String
+`流数据转成指定编码的文本 "Unicode", "GB2312", "UTF-8", "ASCII", "GBK"
+
+StrToByte(strText As String, strCharset As String)
+`文本按指定编码转为流数据 "Unicode", "GB2312", "UTF-8", "ASCII", "GBK"
+
 StrencodeURI(strText) As String  URL转码
+
 StrdecodeURI(strText) As String  URL解码
+
 StrConvert(ByVal strText As String) As String unicode字符转换成中文
+
 StrencodeBase64(String1, Optional Charset = "") As String 字符串编码Base64
+
 StrdecodeBase64(String1, Optional Charset = "") As String 字符串解码Base64
 ```
 系统-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 Clipboard_GetData() As String  剪贴板读取
+
 Clipboard_SetData(strData) As Boolean  剪贴板写入
+
 Clipboard_ClearData() As Boolean  剪贴板清空
+
 UserName() As String  用户名
+
 UserDomain() As String  用户的域名
+
 ComputerName() As String  计算机名
 ```
 文件-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
-TextRead(TextPath) As String  读取txt文件(ANSI编码)
-TextWrite(TextPath, str) As Boolean  写入txt文件(ANSI编码)
-TextAppend(TextPath, str) As Boolean 追加txt文件(ANSI编码)
-TextRead2(TextPath, strCharset As String) As String  读取txt文件(自定义编码) "Unicode", "GB2312", "UTF-7", "UTF-8", "ASCII", "GBK", "Big5", "unicodeFEFF", "unicodeFFFE"
-TextWrite2(TextPath, str, strCharset As String) As Boolean  写入txt文件(自定义编码)
-TextAppend2(TextPath, str, strCharset As String) As Boolean  追加txt文件(自定义编码)
-FileToByte(strFileName As String) As Byte() 读文件为字节数组
-ByteToFile(arrByte, strFileName As String)  字节数组转文件
-FolderExists(Path) As Boolean  文件夹是否存在
-FolderDelete(Path) As Boolean  删除文件夹
-FolderCopy(Source, Destination, Optional OverWrite As Boolean = True) As Boolean  复制文件夹
-FolderCreate(Path) As Boolean  创建文件夹，可以创建上级不存在的文件夹，创建多级
-FolderSearch(pPath) As Variant  遍历文件夹里文件夹
-FolderSearchSub(pPath) As Variant 遍历文件夹(含子文件夹)
-FileExists(Path) As Boolean  文件是否存在
-FileDelete(Path) As Boolean  删除文件
-FileCopy(Source, Destination, Optional OverWrite As Boolean = True) As Boolean 复制文件
-FileSearch(pPath) As Variant 遍历文件夹里文件
-FileSearchSub(pPath, Optional pMask As String = "") As Variant 遍历文件夹里文件(含子文件夹) pPath搜索起始路径，pMask如果要必填写,那得这样填写"*.xlsx",加星号
+TextRead(TextPath) As String
+`读取txt文件(ANSI编码)
+
+TextWrite(TextPath, str) As Boolean
+`写入txt文件(ANSI编码)
+
+TextAppend(TextPath, str) As Boolean
+`追加txt文件(ANSI编码)
+
+TextRead2(TextPath, strCharset As String) As String
+`读取txt文件(自定义编码) "Unicode", "GB2312", "UTF-7", "UTF-8", "ASCII", "GBK", "Big5", "unicodeFEFF", "unicodeFFFE"
+
+TextWrite2(TextPath, str, strCharset As String) As Boolean
+`写入txt文件(自定义编码)
+
+TextAppend2(TextPath, str, strCharset As String) As Boolean
+`追加txt文件(自定义编码)
+
+FileToByte(strFileName As String) As Byte()
+`读文件为字节数组
+
+ByteToFile(arrByte, strFileName As String)
+`字节数组转文件
+
+FolderExists(Path) As Boolean
+`文件夹是否存在
+
+FolderDelete(Path) As Boolean
+`删除文件夹
+
+FolderCopy(Source, Destination, Optional OverWrite As Boolean = True) As Boolean
+`复制文件夹
+
+FolderCreate(Path) As Boolean
+`创建文件夹，可以创建上级不存在的文件夹，创建多级
+
+FolderSearch(pPath) As Variant
+`遍历文件夹里文件夹
+
+FolderSearchSub(pPath) As Variant
+`遍历文件夹(含子文件夹)
+
+FileExists(Path) As Boolean
+`文件是否存在
+
+FileDelete(Path) As Boolean
+`删除文件
+
+FileCopy(Source, Destination, Optional OverWrite As Boolean = True) As Boolean
+`复制文件
+
+FileSearch(pPath) As Variant
+`遍历文件夹里文件
+
+FileSearchSub(pPath, Optional pMask As String = "") As Variant
+`遍历文件夹里文件(含子文件夹) pPath搜索起始路径，pMask如果要必填写,那得这样填写"*.xlsx",加星号
 ```
 路径-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 PathGetTemp() As String  返回临时路径
+
 PathGetMyDocuments() As String  返回文档路径
+
 PathGetDesktop() As String  返回桌面路径
+
 PathBaseName(Path) As String  返回文件名，不含扩展名
+
 PathFileName(Path) As String  返回文件名，包含扩展名
+
 PathExtensionName(Path) As String  返回扩展名，不带.
+
 PathParentFolderName(Path) As String  返回路径,末尾不带\
+
 PathIsFolder(Path) As Boolean 判断是否是文件夹
+
 PathTempName() As String  随机文件名
-PathNameSerialNumber(Name, Optional DelimiterLeft = "(", Optional DelimiterRight = ")") As String 名称重复时给名称加序号 Name当前名称 DelimiterLeft序号左侧分隔符 DelimiterRight序号右侧分隔符
+
+PathNameSerialNumber(Name, Optional DelimiterLeft = "(", Optional DelimiterRight = ")") As String
+`名称重复时给名称加序号 Name当前名称 DelimiterLeft序号左侧分隔符 DelimiterRight序号右侧分隔符
 ```
 单元格-----------------------------------------------------------------------------------------------------------------------------------
 ```VB
 ColumnChr(ByVal v) As String  数字转字母
+
 ColumnChrArr(ParamArray arr()) As Variant  数字转字母Arr
+
 ColumnI(ByVal s) As Long  字母转数字
+
 ColumnIArr(ParamArray arr()) As Variant  字母转数字Arr
-UnionEx(ByRef Rngs) As Range  单元格并集扩展,传入单元格数组或集合的Range对象，合并成Range
-UnionEx_Str(ByRef Rngs, sh) As Range  单元格并集扩展,传入单元格数组或集合的字符串地址，合并成Range
-SheetNew(wb As Workbook, Optional Name As String = "") As Worksheet  末尾新增工作表
-SheetCopyAfter(sh, Optional Name As String = "") As Worksheet  复制工作表到末尾
-SheetCopyNow(sh, Optional Name As String = "") As Worksheet  复制工作表到新工作簿
-SheetIsName(wb As Workbook, ByVal Name As String) As Boolean  检查工作表是否存在
-WorkbookIsName(ByVal Name As String) As Boolean  检查工作簿是否存在，Name不包含后缀
-ArrToRange(ByRef arr, ByVal rng)  数组写入工作表
-ArrToRangeUndo(ByRef arr, ByVal rng)  数组写入工作表带撤销
-RangAddUndo(ByVal rng)  添加撤销数据
-RangStartUndo()  启动撤销 先添加后启动
-RngResizeDownRow(ByRef rng, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Range 单元格行向下扩展区域
-RngResizeRightColumn(ByRef rng) As Range 单元格行向右扩展区域
-RngResizeEndRow(ByRef rng, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Range 单元格行最后一行扩展区域
-RngResizeEndColumn(ByRef rng) As Range 单元格行最后一列扩展区域
-RngDownRow(ByRef rng As Range, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Long 单元格向下一行
-RngRightColumn(ByRef rng As Range) As Long 单元格向右一列
-RngEndRow(ByRef rng As Range, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Long 单元格最后一行
-RngEndColumn(ByRef rng As Range) As Long 单元格最后一列
-RangeToArr(rng As Range) As Variant 单元格值到数组,保证一个单元格也是数组
-RngMerge_Empty(MergeRng As Range) 向下合并空值单元格
-RngMerge_Repeat(MergeRng As Range) 重复值合并单元格
-RngAddBorders(rng As Range) 加框线
-RngAlignmentCenter(rng As Range) 单元格居中对齐
-SheetsSummary(Optional SelectName = "*", Optional RemoveName = "", Optional RngAddress = "", Optional wb As Workbook = Nothing) As Variant 汇总工作表
-    汇总工作表 SelectName包含的工作表名 RemoveName排除的工作表名 RngAddress单元格区域默认UsedRange  wb工作簿默认当前
-UCreatePivotTable(SourceData As Range, TableDestination As Range, TableName) As PivotTable创建数据透视表 SourceData数据源单元格 TableDestination放置单元格 TableName透视表名字
+
+UnionEx(ByRef Rngs) As Range
+`单元格并集扩展,传入单元格数组或集合的Range对象，合并成Range
+
+UnionEx_Str(ByRef Rngs, sh) As Range
+`单元格并集扩展,传入单元格数组或集合的字符串地址，合并成Range
+
+SheetNew(wb As Workbook, Optional Name As String = "") As Worksheet
+`末尾新增工作表
+
+SheetCopyAfter(sh, Optional Name As String = "") As Worksheet
+`复制工作表到末尾
+
+SheetCopyNow(sh, Optional Name As String = "") As Worksheet
+`复制工作表到新工作簿
+
+SheetIsName(wb As Workbook, ByVal Name As String) As Boolean
+`检查工作表是否存在
+
+WorkbookIsName(ByVal Name As String) As Boolean
+`检查工作簿是否存在，Name不包含后缀
+
+ArrToRange(ByRef arr, ByVal rng)
+`数组写入工作表
+
+ArrToRangeUndo(ByRef arr, ByVal rng)
+`数组写入工作表带撤销
+
+RangAddUndo(ByVal rng)
+`添加撤销数据
+
+RangStartUndo()
+`启动撤销 先添加后启动
+
+RngResizeDownRow(ByRef rng, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Range
+`单元格行向下扩展区域
+
+RngResizeRightColumn(ByRef rng) As Range
+`单元格行向右扩展区域
+
+RngResizeEndRow(ByRef rng, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Range
+`单元格行最后一行扩展区域
+
+RngResizeEndColumn(ByRef rng) As Range
+`单元格行最后一列扩展区域
+
+RngDownRow(ByRef rng As Range, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Long
+`单元格向下一行
+
+RngRightColumn(ByRef rng As Range) As Long
+`单元格向右一列
+
+RngEndRow(ByRef rng As Range, Optional FilterShowAllData As Boolean = False, Optional CancelHidden As Boolean = False) As Long
+`单元格最后一行
+
+RngEndColumn(ByRef rng As Range) As Long
+`单元格最后一列
+
+RangeToArr(rng As Range) As Variant
+`单元格值到数组,保证一个单元格也是数组
+
+RngMerge_Empty(MergeRng As Range)
+`向下合并空值单元格
+
+RngMerge_Repeat(MergeRng As Range)
+`重复值合并单元格
+
+RngAddBorders(rng As Range)
+`加框线
+
+RngAlignmentCenter(rng As Range)
+`单元格居中对齐
+
+SheetsSummary(Optional SelectName = "*", Optional RemoveName = "", Optional RngAddress = "", Optional wb As Workbook = Nothing) As Variant
+`汇总工作表 SelectName包含的工作表名 RemoveName排除的工作表名 RngAddress单元格区域默认UsedRange  wb工作簿默认当前
+
+UCreatePivotTable(SourceData As Range, TableDestination As Range, TableName) As PivotTable
+`创建数据透视表 SourceData数据源单元格 TableDestination放置单元格 TableName透视表名字
+
 USetPivotField(PTable As PivotTable, FieldName As String, Orientation As XlPivotFieldOrientation, _
         Position As Long, Optional Caption As String = "", Optional Fun As XlConsolidationFunction = xlCount)
     设置透视表字段 PTable透视表对象UCreatePivotTable返回值  FieldName表格标题
@@ -955,107 +1178,254 @@ USetPivotField(PTable As PivotTable, FieldName As String, Orientation As XlPivot
     Caption  字段标题
     Fun   Orientation=xlDataField(数据)时 设置汇总方式：xlSum  xlCount  xlMin  xlMax
 
-FormatConditionAdd(Rng As Range, Formula, Color) As FormatCondition 新增条件格式  Rng条件格式范围  Formula公式  Color颜色RGB值
-FormatConditionAdd_Pattern(Rng As Range, Formula, PatternColor, Optional Pattern As XlPattern = xlPatternGray50) As FormatCondition 新增条件格式图案  Rng条件格式范围  Formula公式  PatternColor颜色RGB值
-FormatConditionFind(Rng As Range, ByVal Formula) As FormatCondition 按公式查找条件格式
-FormatConditionFind_Color(Rng As Range, Color) As FormatCondition 按颜色查找条件格式
-FormatConditionFind_Pattern(Rng As Range, Pattern As XlPattern, PatternColor) As FormatCondition 按图案查找条件格式
-FormatConditionFindCount(Rng As Range, ByVal Formula) As Long 按公式查找条件格式数量  注意Formula:="=ROW($A1)=*"是错误写法 剪贴后A1可能是A65536 所以Formula:="=ROW($A*)=*"
-FormatConditionFindCount_Color(Rng As Range, Color) As Long 按颜色查找条件格式数量
-FormatConditionFindCount_Pattern(Rng As Range, Pattern As XlPattern, PatternColor) As Long 按图案查找条件格式数量
-FormatConditionModify_Formula(FC As FormatCondition, Formula) 条件格式修改公式
-FormatConditionModify_Color(FC As FormatCondition, Color) 条件格式修改颜色
-FormatConditionModify_Pattern(FC As FormatCondition, Pattern As XlPattern, PatternColor) 条件格式修改图案颜色
-FormatConditionModify_ClearColor(FC As FormatCondition) 条件格式清除颜色
-FormatConditionDelete(Rng As Range, ByVal Formula) 按公式删除条件格式 注意Formula:="=ROW($A1)=*"是错误写法 剪贴后A1可能是A65536 所以Formula:="=ROW($A*)=*"
-FormatConditionDelete_Color(Rng As Range, Color) 按颜色删除条件格式
-FormatConditionDelete_Pattern(Rng As Range, Pattern As XlPattern, PatternColor) 按图案删除条件格式
-Rng_Validation(rng As Range, Formula, Optional ShowError As Boolean = True, Optional AlertStyle As XlDVAlertStyle = xlValidAlertStop) 数据有效性 rng单元格 Formula序列"a,b,c" ShowError 显示错误提示并且禁止输入 AlertStyle错误提示样式
-RngAddComment(rng As Range, CommentText, Optional Visible As Boolean = False) As Comment 添加批注
-RngAddPicture(PicturePath, rng As Range, Optional LowerWidth = 0, Optional LowerHeight = 0, Optional OriginalSizeRatio As Boolean = False) As Shape 添加图片 PicturePath本地路径 rng单元格 LowerWidth宽度缩进量 LowerHeight高度缩进量 OriginalSizeRatio是否按原大小比例
+FormatConditionAdd(Rng As Range, Formula, Color) As FormatCondition
+`新增条件格式  Rng条件格式范围  Formula公式  Color颜色RGB值
+
+FormatConditionAdd_Pattern(Rng As Range, Formula, PatternColor, Optional Pattern As XlPattern = xlPatternGray50) As FormatCondition
+`新增条件格式图案  Rng条件格式范围  Formula公式  PatternColor颜色RGB值
+
+FormatConditionFind(Rng As Range, ByVal Formula) As FormatCondition
+`按公式查找条件格式
+
+FormatConditionFind_Color(Rng As Range, Color) As FormatCondition
+`按颜色查找条件格式
+
+FormatConditionFind_Pattern(Rng As Range, Pattern As XlPattern, PatternColor) As FormatCondition
+`按图案查找条件格式
+
+FormatConditionFindCount(Rng As Range, ByVal Formula) As Long
+`按公式查找条件格式数量  注意Formula:="=ROW($A1)=*"是错误写法 剪贴后A1可能是A65536 所以Formula:="=ROW($A*)=*"
+
+FormatConditionFindCount_Color(Rng As Range, Color) As Long
+`按颜色查找条件格式数量
+
+FormatConditionFindCount_Pattern(Rng As Range, Pattern As XlPattern, PatternColor) As Long
+`按图案查找条件格式数量
+
+FormatConditionModify_Formula(FC As FormatCondition, Formula)
+`条件格式修改公式
+
+FormatConditionModify_Color(FC As FormatCondition, Color)
+`条件格式修改颜色
+
+FormatConditionModify_Pattern(FC As FormatCondition, Pattern As XlPattern, PatternColor)
+`条件格式修改图案颜色
+
+FormatConditionModify_ClearColor(FC As FormatCondition)
+`条件格式清除颜色
+
+FormatConditionDelete(Rng As Range, ByVal Formula)
+`按公式删除条件格式 注意Formula:="=ROW($A1)=*"是错误写法 剪贴后A1可能是A65536 所以Formula:="=ROW($A*)=*"
+
+FormatConditionDelete_Color(Rng As Range, Color)
+`按颜色删除条件格式
+
+FormatConditionDelete_Pattern(Rng As Range, Pattern As XlPattern, PatternColor)
+`按图案删除条件格式
+
+Rng_Validation(rng As Range, Formula, Optional ShowError As Boolean = True, Optional AlertStyle As XlDVAlertStyle = xlValidAlertStop)
+`数据有效性 rng单元格 Formula序列"a,b,c" ShowError 显示错误提示并且禁止输入 AlertStyle错误提示样式
+
+RngAddComment(rng As Range, CommentText, Optional Visible As Boolean = False) As Comment
+`添加批注
+
+RngAddPicture(PicturePath, rng As Range, Optional LowerWidth = 0, Optional LowerHeight = 0, Optional OriginalSizeRatio As Boolean = False) As Shape
+`添加图片 PicturePath本地路径 rng单元格 LowerWidth宽度缩进量 LowerHeight高度缩进量 OriginalSizeRatio是否按原大小比例
 ```
 数学-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 SumParams(ParamArray arr()) As Double 参数求和
+
 MaxParams(ParamArray arr()) As Double  参数求最大值
+
 MinParams(ParamArray arr()) As Double  参数求最小值
+
 MaxParams2(Number1, Number2) As Double 两数取最大值 效率高
+
 MinParams2(Number1, Number2) As Double 两数取最小值 效率高
+
 MultiplesUp(Number, Multiples) As Double 向上舍入基数的倍数
+
 MultiplesDown(Number, Multiples) As Double 向下舍入基数的倍数
+
 IntUp(Number) As Long 向上舍入取整
+
 IntDown(Number) As Long 向下舍入取整
-RoundUp(Number, Optional ByVal NumDigitsAfterDecimal As Long = 0) As Double 向上舍入
-RoundDown(Number, Optional ByVal NumDigitsAfterDecimal As Long = 0) As Double 向下舍入
+
+RoundUp(Number, Optional ByVal NumDigitsAfterDecimal As Long = 0) As Double
+`向上舍入
+
+RoundDown(Number, Optional ByVal NumDigitsAfterDecimal As Long = 0) As Double
+`向下舍入
+
 MultipleUp(Number, Significance) As Double 向上舍入指定基数的倍数
+
 MultipleDown(Number, Significance) As Double 向下舍入指定基数的倍数
+
 MultipleRound(Number, Significance) As Double 四舍五入指定基数的倍数
+
 Float_Clear(Number) 清除浮点数运算导致的精度缺失
-RoundEX(number, Optional ByVal NumDigitsAfterDecimal As Long = 0) As Double 真的四舍五入
-RandAddSub(Optional Number As Double = 1) As Double 随机 +Number 或 -Number
+
+RoundEX(number, Optional ByVal NumDigitsAfterDecimal As Long = 0) As Double
+`真的四舍五入
+
+RandAddSub(Optional Number As Double = 1) As Double
+`随机 +Number 或 -Number
+
 ModNumber(Number1, Number2) As Double 求余  十亿大数求余不报错
+
 RandBetween(l, r) As Long 按范围随机数
-NumberSplit(Number, interval) As Variant  拆分数组 Number被拆分数组 interval拆分大小 NumberSplit(5, 2)->[2,2,1]
+
+NumberSplit(Number, interval) As Variant
+`拆分数组 Number被拆分数组 interval拆分大小 NumberSplit(5, 2)->[2,2,1]
+
 NumberLCase(NumberStr) As Double 数字大写转小写
+
 NumberUCase(Number) As String 数字转大写
+
 RMBLCase(NumberStr) As Currency 人民币小写
+
 RMBUCase(curmoney) As String 人民币大写
-NumberRangeInside(Number, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Boolean 区间比较 内部
-NumberRangeExternal(Number, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Boolean 区间比较 外部
+
+NumberRangeInside(Number, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Boolean
+`区间比较 内部
+
+NumberRangeExternal(Number, NumberL, NumberR, Optional NumberRangeRule As NumberRangeType = Include_Exclude) As Boolean
+`区间比较 外部
+
 IsEven(Number) As Boolean 判断偶数
+
 IsOdd(Number) As Boolean  判断奇数
-Number_Cycle(ByRef Number, ByRef CycleCount) As Long 循环序号 (i,3)->1,2,3,1,2,3,1,2,3
-Number_Repeat(ByRef Number, ByRef RepeatCount) As Long 重复序号 (i,3)->1,1,1,2,2,2,3,3,3
-Number_Separated(ByRef Number, ByRef SeparatedCount) As Long 相隔序号 (i,3)->1,4,7,10,13,16,19,22,25
+
+Number_Cycle(ByRef Number, ByRef CycleCount) As Long
+`循环序号 (i,3)->1,2,3,1,2,3,1,2,3
+
+Number_Repeat(ByRef Number, ByRef RepeatCount) As Long
+`重复序号 (i,3)->1,1,1,2,2,2,3,3,3
+
+Number_Separated(ByRef Number, ByRef SeparatedCount) As Long
+`相隔序号 (i,3)->1,4,7,10,13,16,19,22,25
+
 vbMaxNumber 常熟 最大值
+
 vbMinNumber 常熟 最小值
+
 vbPi() As Double Pi的值
+
 AngleToRadian(Angle) As Double 角度转弧度
-RadianToAngle(Radian, Optional ByVal NumDigitsAfterDecimal = 3) As Double 弧度转角度
+
+RadianToAngle(Radian, Optional ByVal NumDigitsAfterDecimal = 3) As Double
+`弧度转角度
 ```
 功能-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
-Deconstruc(ParamArray DValue() As Variant, ByRef Value As Variant) 解构 Deconstruc(变量1, 变量2, 变量3) = Array(1, 2, 3)
+Deconstruc(ParamArray DValue() As Variant, ByRef Value As Variant)
+`解构 Deconstruc(变量1, 变量2, 变量3) = Array(1, 2, 3)
+
 Cover(iValue, jValue) 赋值  iValue = jValue
+
 Exchange(iValue, jValue) 交换
+
 ColToArr(ByRef col) As Variant   Col集合转数组
-DictionaryCreate(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 item为数组索引 重复值索引取最前
-DictionaryCreateRev(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 item为数组索引 反向 重复值索引取最后
-DictionaryCreateIndex_ItemIsCol(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 重复值添加到集合索引
-DictionaryCreate_DicIndex(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 item为字典自身索引
-DictionaryCreate_Items(arrKeys, arrItems, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 双数组到字典
-DictionaryCreate_ItemsRev(arrKeys, arrItems, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 双数组到字典 反向
-DictionaryCreate_ItemsIsCol(arrKeys, arrItems, Optional CompareMode As CompareMethod = BinaryCompare) As Object 创建字典 双数组到字典 重复值添加到集合
-DictionaryToArr2D(dic) As Variant 字典到二维数组 1列是Key 2列是Item
-DictionaryGetValues(dic, ByVal arrKey, Optional NoExistsValue = Empty) As Variant 字典取多个值  arrKey可以是一维二维数组返回对应大小的Item值数组 NoExistsValue不存填充的值
-DictionaryGetValuesParam(dic, ParamArray Keys()) As Variant 字典取多个值 多参数Key
-DictionaryExists(dic, ByVal arrKey) As Variant 字典判断多个值 arrKey可以是一维二维数组返回对应大小的True/False数组
-DictionaryAdds(Dic, arrKeys, arrItems) As Object 字典批量添加 重复不会修改原来值
-DictionaryAddsRev(Dic, arrKeys, arrItems) As Object 字典批量添加 重复则覆盖原来值
-DictionaryMerge(ParamArray Dics()) As Object 字典合并
-DictionaryMergeRev(ParamArray Dics()) As Object 字典合并 反向 有重复后面替换前面
-Application_Attribute(bol As Boolean) Application_Attribute(False)关闭一系列影响效率属性  **注意程序结束后必须 Application_Attribute(True)**
-Sleep(PauseTime)  不挂起的不占CPU延迟,单位毫秒
-GetTimer() 返回开机时间 单位毫秒
-PrintEx(ByRef arg, Optional RowCount = 0, Optional DividerLine As Boolean = True) 打印函数 arg打印内容 RowCount打印行数，负数倒数  DividerLine是否有分隔线*普通类型默认不打印为False时才打印分割线，复杂类型默认打印为False时不打印*
+
+DictionaryCreate(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 item为数组索引 重复值索引取最前
+
+DictionaryCreateRev(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 item为数组索引 反向 重复值索引取最后
+
+DictionaryCreateIndex_ItemIsCol(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 重复值添加到集合索引
+
+DictionaryCreate_DicIndex(arr, Optional StartIndex As Long = 1, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 item为字典自身索引
+
+DictionaryCreate_Items(arrKeys, arrItems, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 双数组到字典
+
+DictionaryCreate_ItemsRev(arrKeys, arrItems, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 双数组到字典 反向
+
+DictionaryCreate_ItemsIsCol(arrKeys, arrItems, Optional CompareMode As CompareMethod = BinaryCompare) As Object
+`创建字典 双数组到字典 重复值添加到集合
+
+DictionaryToArr2D(dic) As Variant
+`字典到二维数组 1列是Key 2列是Item
+
+DictionaryGetValues(dic, ByVal arrKey, Optional NoExistsValue = Empty) As Variant
+`字典取多个值  arrKey可以是一维二维数组返回对应大小的Item值数组 NoExistsValue不存填充的值
+
+DictionaryGetValuesParam(dic, ParamArray Keys()) As Variant
+`字典取多个值 多参数Key
+
+DictionaryExists(dic, ByVal arrKey) As Variant
+`字典判断多个值 arrKey可以是一维二维数组返回对应大小的True/False数组
+
+DictionaryAdds(Dic, arrKeys, arrItems) As Object
+`字典批量添加 重复不会修改原来值
+
+DictionaryAddsRev(Dic, arrKeys, arrItems) As Object
+`字典批量添加 重复则覆盖原来值
+
+DictionaryMerge(ParamArray Dics()) As Object
+`字典合并
+
+DictionaryMergeRev(ParamArray Dics()) As Object
+`字典合并 反向 有重复后面替换前面
+
+Application_Attribute(bol As Boolean) Application_Attribute(False)
+`关闭一系列影响效率属性  **注意程序结束后必须 Application_Attribute(True)**
+
+Sleep(PauseTime)
+`不挂起的不占CPU延迟,单位毫秒
+
+GetTimer()
+`返回开机时间 单位毫秒
+
+PrintEx(ByRef arg, Optional RowCount = 0, Optional DividerLine As Boolean = True)
+`打印函数 arg打印内容 RowCount打印行数，负数倒数  DividerLine是否有分隔线*普通类型默认不打印为False时才打印分割线，复杂类型默认打印为False时不打印*
+
 encodeBase64(Bytes) As String 编码Base64
+
 decodeBase64(String1) As Byte() 解码Base64
-ImageSize(ImagePath) As Variant 图片像素宽长大小  返回Array(Width, Height)
-LoadPictureEx(filename) As IPictureDisp 类似LoadPicture 支持多种图片格式
+
+ImageSize(ImagePath) As Variant
+`图片像素宽长大小  返回Array(Width, Height)
+
+LoadPictureEx(filename) As IPictureDisp
+`类似LoadPicture 支持多种图片格式
+
 CLngEx(Expression) As Variant 扩展CLng 支持数组转换
+
 CDateEx(Expression) As Variant 扩展CDate 支持数组转换
+
 CDblEx(Expression) As Variant 扩展CDbl 支持数组转换
+
 CCurEx(Expression) As Variant 扩展CCur 支持数组转换
+
 CStrEx(Expression) As Variant 扩展CStr 支持数组转换
+
 CVarEx(Expression) As Variant 扩展CVar 支持数组转换
+
 CBoolEx(Expression) As Variant 扩展CBool 支持数组转换
 ```
 Http-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
-HttpGet(Url, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Get请求
-HttpDownload(Url, DownloadFileName, Optional RequestHeaderDic = Nothing) Get下载文件
-HttpPost(Url, Optional SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Post请求
-HttpPost_Form(Url, SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Post请求 发送表单数据
-HttpPost_Json(Url, SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant Post请求 发送Json数据
-HttpReadJson(Jsonstr As String, Routestr As String) As Variant 读取JSON属性
+HttpGet(Url, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant
+`Get请求
+
+HttpDownload(Url, DownloadFileName, Optional RequestHeaderDic = Nothing)
+`Get下载文件
+
+HttpPost(Url, Optional SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant
+`Post请求
+
+HttpPost_Form(Url, SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant
+`Post请求 发送表单数据
+
+HttpPost_Json(Url, SendValue, Optional RequestHeaderDic = Nothing, Optional strCharset As String = "UTF-8") As Variant
+`Post请求 发送Json数据
+
+HttpReadJson(Jsonstr As String, Routestr As String) As Variant
+`读取JSON属性
 ```
