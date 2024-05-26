@@ -4,7 +4,8 @@ VBA函数库
 数组-------------------------------------------------------------------------------------------------------------------------------------
 ```VB
 *适用于所有数组函数*：索引Index参数可以使用@修饰符 表示从头数第n个行列 例如ArrGetRegion(Array(1, 2, 3), 1, 1)->[2]   ArrGetRegion(Array(1, 2, 3), 1@, 1)->[1]
-Let Titles(ParamArray TitleNames(), ByRef TitleIndexs As Variant) 缓存标题，将标题字段转成数字输出 例子：Titles("a", "b", "c") = Array(1, 2, 3)
+Let Titles(ParamArray TitleNames(), ByRef TitleIndexs As Variant)
+'缓存标题，将标题字段转成数字输出 例子：Titles("a", "b", "c") = Array(1, 2, 3)
 Get Titles(ParamArray TitleNames()) As Variant 取出缓存标题 返回数组  T = Titles("a", "b", "c")->[1, 2, 3]
 Get Title() As Object 返回缓存标题字典 利用这个取单个标题  Title!a -> 1  Title!b -> 2
 ArrCache(Optional ByRef RowIndex, Optional ByRef ColumnIndex, Optional Expansion As Boolean = False) 缓存数组属性，可以对其赋值取值操作，支持一维和二维
